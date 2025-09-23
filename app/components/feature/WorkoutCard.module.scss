@@ -1,0 +1,23 @@
+@use "../../../styles/abstracts/variables" as *;
+
+.workout-card {
+  max-width: min(400px, 100dvw - $spacing-md * 2);
+  margin: 0 auto;
+}
+
+.exercise {
+  padding: $spacing-sm 0;
+
+  & > h4 {
+    display: inline;
+    font-size: $font-size-base;
+  }
+
+  &:not(:last-child) {
+    border-bottom: 1px solid $border-color;
+  }
+}
+
+.set-setting-list {
+  padding-left: 3em
+}

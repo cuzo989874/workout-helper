@@ -1,0 +1,18 @@
+@use '../../styles/abstracts/variables' as *;
+
+.home-main {
+  padding-bottom: 120px;
+}
+
+.date-chip {
+  display: block;
+  margin: $spacing-md auto;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $border-radius-lg;
+  background-color: #eee;
+  color: #888;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  text-align: center;
+  width: fit-content;
+}
