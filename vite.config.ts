@@ -1,8 +1,9 @@
 import { defineConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
-import { reactRouter } from "@react-router/dev/vite";
+import { reactRouter } from "@react-router/dev/vite"; 
+import svgr from "vite-plugin-svgr"; 
 
 
 export default defineConfig({
-  plugins: [reactRouter(), tsconfigPaths()]
+  plugins: [reactRouter(), tsconfigPaths(), svgr()]
 });

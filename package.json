@@ -1,5 +1,6 @@
 {
   "name": "workout-helper",
+  "version": "0.0.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -18,7 +19,8 @@
     "lodash": "^4.17.21",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-router": "^7.7.1"
+    "react-router": "^7.7.1",
+    "vite-plugin-svgr": "^4.5.0"
   },
   "devDependencies": {
     "@react-router/dev": "^7.7.1",
