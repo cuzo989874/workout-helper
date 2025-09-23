@@ -10,11 +10,15 @@
     "typecheck": "react-router typegen && tsc",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "format": "prettier --write \"app/**/*.{ts,tsx,js,jsx,json,css,md}\""
+    "format": "prettier --write \"app/**/*.{ts,tsx,js,jsx,json,css,md}\"",
+    "test": "vitest run --config ./vitest.config.ts",
+    "test:watch": "vitest --config ./vitest.config.ts --watch",
+    "test:coverage": "npx vitest run --coverage.enabled --coverage.provider=istanbul --coverage.all"
   },
   "dependencies": {
     "@react-router/node": "^7.7.1",
     "@react-router/serve": "^7.7.1",
+    "@testing-library/jest-dom": "^6.8.0",
     "i18next": "^25.5.2",
     "isbot": "^5.1.27",
     "lodash": "^4.17.21",
@@ -26,6 +30,8 @@
   },
   "devDependencies": {
     "@react-router/dev": "^7.7.1",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
     "@types/lodash": "^4.17.20",
     "@types/node": "^20",
     "@types/react": "^19.1.2",
