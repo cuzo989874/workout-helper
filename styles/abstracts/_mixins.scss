@@ -1,0 +1,103 @@
+// Mixins
+// ======
+// Reusable SCSS mixins for the project
+
+@use "sass:map";
+@use "variables" as *;
+
+// Responsive Breakpoint Mixin
+// ===========================
+// Generates responsive styles for all breakpoints
+//
+// @mixin responsive-breakpoints
+// @param {Function} $content - Content block function that receives breakpoint name and value
+//
+// @example scss
+//   @include responsive-breakpoints ($breakpoint, $value) {
+//     .#{$breakpoint}:my-class {
+//       property: value;
+//     }
+//   }
+//
+// @example css
+//   @media (min-width: 576px) {
+//     .sm:my-class { property: value; }
+//   }
+//   @media (min-width: 768px) {
+//     .md:my-class { property: value; }
+//   }
+//   // ... and so on for all breakpoints
+@mixin responsive-breakpoints {
+  @each $breakpoint, $value in (
+    'sm': $breakpoint-sm,
+    'md': $breakpoint-md,
+    'lg': $breakpoint-lg,
+    'xl': $breakpoint-xl,
+    'xxl': $breakpoint-xxl
+  ) {
+    @media (min-width: $value) {
+      @content($breakpoint, $value);
+    }
+  }
+}
+
+// Gap List Iterator Mixin
+// =======================
+// Iterates through gap-map for spacing utilities
+//
+// @mixin gap-map-iterator
+// @param {Function} $content - Content block function that receives size name and value
+//
+// @example scss
+//   @include gap-map-iterator ($size, $value) {
+//     .spacing-#{$size} {
+//       padding: $value;
+//     }
+//   }
+//
+// @example css
+//   .spacing-none { padding: 0; }
+//   .spacing-xs { padding: 4px; }
+//   .spacing-sm { padding: 8px; }
+//   .spacing-md { padding: 16px; }
+//   // ... and so on for all gap sizes
+@mixin gap-map-iterator() {
+  @each $size, $value in $gap-map {
+    @content($size, $value);
+  }
+}
+
+// Responsive Gap List Iterator Mixin
+// ==================================
+// Combines responsive breakpoints with gap-map iteration
+//
+// @mixin responsive-gap-iterator
+// @param {Function} $content - Content block function that receives breakpoint, size, and value
+//
+// @example scss
+//   @include responsive-gap-iterator ($breakpoint, $size, $value) {
+//     .#{$breakpoint}:p-#{$size} {
+//       padding: $value;
+//     }
+//   }
+//
+// @example css
+//   @media (min-width: 576px) {
+//     .sm:p-none { padding: 0; }
+//     .sm:p-xs { padding: 4px; }
+//     .sm:p-sm { padding: 8px; }
+//     // ... and so on
+//   }
+//   @media (min-width: 768px) {
+//     .md:p-none { padding: 0; }
+//     .md:p-xs { padding: 4px; }
+//     // ... and so on
+//   }
+//   // ... and so on for all breakpoints
+@mixin responsive-gap-iterator() {
+  @include responsive-breakpoints() using ($breakpoint, $value) {
+    @include gap-map-iterator() using ($size, $gap-value) {
+      @content($breakpoint, $size, $gap-value);
+    }
+  }
+} 
