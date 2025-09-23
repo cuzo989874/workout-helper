@@ -1,18 +1,18 @@
-import { useNavigate } from "react-router";
-import styles from "./Header.module.scss";
+import { useNavigate } from 'react-router';
+import styles from './Header.module.scss';
 
 export default function Home() {
   const navigate = useNavigate();
   const handleLogoClick = () => {
-    if (window.location.pathname === "/") {
+    if (window.location.pathname === '/') {
       document.documentElement.scrollTo({
         top: 0,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
     } else {
-      navigate("/");
+      navigate('/');
     }
-  }
+  };
   return (
     <header className={styles.header}>
       <a className="clickable" aria-label="Logo" onClick={handleLogoClick}>

@@ -1,4 +1,3 @@
-
 /**
  * Represents a single set configuration for an exercise.
  * @interface
@@ -32,7 +31,7 @@ export interface IExercise {
   /** Name of the exercise */
   exerciseName: string;
   /** Category of the exercise */
-  category: "Strength" | "Cardio" | "Weightlifting";
+  category: 'Strength' | 'Cardio' | 'Weightlifting';
   /** Additional notes for the exercise (optional) */
   notes?: string;
   /** List of set settings for this exercise */

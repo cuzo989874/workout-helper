@@ -96,7 +96,7 @@ export default function Home() {
               sets: 3,
               reps: 10,
               restTime: 30,
-            }
+            },
           ],
         },
         {
@@ -166,7 +166,7 @@ export default function Home() {
           ],
         },
       ],
-    }
+    },
   ];
   const [workoutList, setWorkoutList] = useState<IWorkout[]>(mockWorkoutList);
 
@@ -188,7 +188,7 @@ export default function Home() {
             <li key={date}>
               <h2 className={styles['date-chip']}>{date}</h2>
               <ul className="flex flex-column gy-md">
-                {lodash.map(workout, (workout) => (
+                {lodash.map(workout, workout => (
                   <li key={workout.id}>
                     <WorkoutCard workout={workout} />
                   </li>
