@@ -30,11 +30,11 @@
   }
 
   &--info {
-    color: variables.$bg-white;
-    background-color: variables.$blue;
+    color: variables.$blue;
 
     &:hover {
       background-color: variables.$dark-blue;
+      color: variables.$bg-white;
     }
   }
 
@@ -78,7 +78,6 @@
 
   &-outline {
     border: 1px solid variables.$border-color;
-    background-color: variables.$bg-white;
     color: variables.$text-dark;
 
     &:hover {

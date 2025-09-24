@@ -32,7 +32,7 @@
 
   &--lg {
     max-width: $breakpoint-md;
-    width: min($breakpoint-md, 100vw - $spacing-md * 2);
+    width: min($breakpoint-md, 100vw - $spacing-sm * 2);
   }
 
   &--no-padding {

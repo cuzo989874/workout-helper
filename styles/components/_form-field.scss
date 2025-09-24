@@ -16,6 +16,13 @@
     margin-left: 2px;
   }
 
+  &__input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
   &__input {
     width: 100%;
     padding: $spacing-md;
@@ -41,6 +48,22 @@
     &::placeholder {
       color: $text-grey;
     }
+
+    &--with-suffix {
+      padding-right: $spacing-xl;
+    }
+  }
+
+  &__suffix {
+    position: absolute;
+    right: $spacing-sm;
+    font-size: 14px;
+    color: $text-grey;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &__hint {
