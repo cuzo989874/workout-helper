@@ -1,11 +1,5 @@
 import i18n from 'i18next';
 
-// 定義時區映射
-const TIMEZONE_MAP = {
-  zh: 'Asia/Taipei',
-  vi: 'Asia/Ho_Chi_Minh',
-};
-
 /**
  * 格式化時間戳（不使用 hook 的版本，用於非 React 組件）
  * @param timestamp 時間戳
@@ -19,12 +13,7 @@ export const formatTimestampWithLanguage = (
   format: Intl.DateTimeFormatOptions | 'time' | 'date' | 'datetime' = 'time'
 ) => {
   const date = new Date(timestamp);
-  const timezone =
-    TIMEZONE_MAP[language as keyof typeof TIMEZONE_MAP] || 'Asia/Taipei';
-
-  let options: Intl.DateTimeFormatOptions = {
-    timeZone: timezone,
-  };
+  let options: Intl.DateTimeFormatOptions = {};
 
   if (typeof format === 'object') {
     options = format;
@@ -51,12 +40,10 @@ export const formatTimestampWithLanguage = (
     }
   }
 
-  return (
-    new Intl.DateTimeFormat(
-      language === 'vi' ? 'vi-VN' : 'zh-TW',
-      options
-    ).format(date) as string
-  ).replace(/\//g, '-');
+  return (new Intl.DateTimeFormat(language, options).format(date) as string).replace(
+    /\//g,
+    '-'
+  );
 };
 
 /**
@@ -79,10 +66,8 @@ export const useFormatTimestamp = () => {
  * @param language 語系
  * @returns 當前時區的日期
  */
-export const getCurrentDateWithLanguage = (language: string) => {
-  const timezone =
-    TIMEZONE_MAP[language as keyof typeof TIMEZONE_MAP] || 'Asia/Taipei';
-  return new Date().toLocaleString('en-US', { timeZone: timezone });
+export const getCurrentDateWithLanguage = () => {
+  return new Date().toLocaleString('en-US');
 };
 
 /**
@@ -90,7 +75,7 @@ export const getCurrentDateWithLanguage = (language: string) => {
  * @returns 當前時區的日期
  */
 export const useGetCurrentDate = () => {
-  return () => getCurrentDateWithLanguage(i18n.language);
+  return () => getCurrentDateWithLanguage();
 };
 
 /**
