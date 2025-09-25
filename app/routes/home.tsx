@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { useNavigate } from 'react-router';
 
 import lodash from 'lodash';
 
@@ -7,7 +8,9 @@ import WorkoutCard from '~/components/feature/WorkoutCard';
 
 import type { IWorkout } from '~/interface/workout';
 
+import AddIcon from '~/assets/google-fonts/add.svg?react';
 import styles from './home.module.scss';
+import { LocalStorageService } from '~/services/LocalStorageService';
 
 export function meta() {
   return [
@@ -17,166 +20,14 @@ export function meta() {
 }
 
 export default function Home() {
-  const mockWorkoutList: IWorkout[] = [
-    {
-      id: '1',
-      date: '2025-09-20',
-      description: 'Chest Day',
-      exerciseList: [
-        {
-          exerciseTime: '10:00',
-          exerciseName: 'Push ups',
-          category: 'Weightlifting',
-          notes: '',
-          setSettingList: [
-            {
-              setSettingId: 'FVHJK789',
-              weightLifted: 20,
-              sets: 3,
-              reps: 10,
-              restTime: 30,
-            },
-          ],
-        },
-        {
-          exerciseTime: '10:20',
-          exerciseName: 'Barbell bench press',
-          category: 'Weightlifting',
-          notes: 'Some notes',
-          setSettingList: [
-            {
-              setSettingId: 'KJHGBJH7',
-              weightLifted: 20,
-              sets: 1,
-              reps: 10,
-              restTime: 120,
-              notes: 'warm up',
-            },
-            {
-              setSettingId: 'KJHGBJH7',
-              weightLifted: 40,
-              sets: 1,
-              reps: 8,
-              restTime: 120,
-              notes: 'hybrid set',
-            },
-            {
-              setSettingId: 'KJHGBJH7',
-              weightLifted: 60,
-              sets: 3,
-              reps: 6,
-              restTime: 120,
-              notes: 'main set',
-            },
-          ],
-        },
-      ],
-    },
-    {
-      id: '2',
-      date: '2025-09-21',
-      description: 'Back Day',
-      exerciseList: [
-        {
-          exerciseTime: '22:00',
-          exerciseName: 'Pull ups',
-          category: 'Weightlifting',
-          notes: '',
-          setSettingList: [
-            {
-              setSettingId: 'KJHGBJH7',
-              weightLifted: 20,
-              sets: 3,
-              reps: 10,
-              restTime: 30,
-            },
-            {
-              setSettingId: 'KJHGBJH7',
-              weightLifted: 40,
-              sets: 3,
-              reps: 10,
-              restTime: 30,
-            },
-          ],
-        },
-        {
-          exerciseTime: '22:20',
-          exerciseName: 'Deadlift',
-          category: 'Weightlifting',
-          notes: '',
-          setSettingList: [
-            {
-              setSettingId: 'KJHGBJH7',
-              weightLifted: 40,
-              sets: 3,
-              reps: 10,
-              restTime: 30,
-            },
-            {
-              setSettingId: 'KJHGBJH7',
-              weightLifted: 60,
-              sets: 3,
-              reps: 10,
-              restTime: 30,
-            },
-          ],
-        },
-        {
-          exerciseTime: '22:40',
-          exerciseName: 'Squats',
-          category: 'Weightlifting',
-          notes: '',
-          setSettingList: [
-            {
-              setSettingId: 'KJHGBJH7',
-              weightLifted: 60,
-              sets: 3,
-              reps: 10,
-              restTime: 30,
-            },
-            {
-              setSettingId: 'KJHGBJH7',
-              weightLifted: 80,
-              sets: 3,
-              reps: 10,
-              restTime: 30,
-            },
-          ],
-        },
-      ],
-    },
-    {
-      id: '3',
-      date: '2025-09-21',
-      description: 'Back Day(Night)',
-      exerciseList: [
-        {
-          exerciseTime: '22:00',
-          exerciseName: 'Pull ups',
-          category: 'Weightlifting',
-          notes: '',
-          setSettingList: [
-            {
-              setSettingId: 'KJHGBJH7',
-              weightLifted: 20,
-              sets: 3,
-              reps: 10,
-              restTime: 30,
-            },
-          ],
-        },
-      ],
-    },
-  ];
-  const [workoutList, setWorkoutList] = useState<IWorkout[]>(mockWorkoutList);
+  const navigate = useNavigate();
 
-  const groupedWorkoutByDate = useMemo(() => {
-    return lodash.groupBy(workoutList, 'date');
-  }, [workoutList]);
+  const [workoutList, setWorkoutList] = useState<IWorkout[]>([]);
+
+  const groupedWorkoutByDate = useMemo(() => lodash.groupBy(workoutList, 'date'), [workoutList]);
 
   useEffect(() => {
-    // TODO: get LocalStorage workoutList
-    setWorkoutList(mockWorkoutList);
+    setWorkoutList(LocalStorageService.loadWorkouts() || []);
   }, []);
 
   return (
@@ -189,7 +40,10 @@ export default function Home() {
               <h2 className={styles['date-chip']}>{date}</h2>
               <ul className="flex flex-column gy-md">
                 {lodash.map(workout, workout => (
-                  <li key={workout.id}>
+                  <li
+                    key={workout.id}
+                    onClick={() => navigate(`/workout/${workout.id}`)}
+                  >
                     <WorkoutCard workout={workout} />
                   </li>
                 ))}
@@ -197,6 +51,12 @@ export default function Home() {
             </li>
           ))}
         </ul>
+        <div
+          className={styles['floating-action-button']}
+          onClick={() => navigate('/workout/create')}
+        >
+          <AddIcon width={32} height={32} fill="currentColor" />
+        </div>
       </main>
     </>
   );
