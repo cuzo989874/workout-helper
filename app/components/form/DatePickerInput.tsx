@@ -11,6 +11,7 @@ import { formatDateAsNumeric } from '~/utils/dateUtils';
 
 import DatePickerPopup, { type IDatePickerPopupRef } from './DatePickerPopup';
 
+import CalendarIcon from '~/assets/google-fonts/calendar_month.svg?react';
 import styles from './DatePickerInput.module.scss';
 
 export interface IDatePickerInputRef {
@@ -173,7 +174,7 @@ const DatePickerInput: React.FC<IDatePickerInputProps> = ({
           aria-label={t('datePicker.selectDate')}
           onClick={handleCalendarClick}
         >
-          <i className="fas fa-calendar-alt"></i>
+          <CalendarIcon width={18} height={18} />
         </button>
       </div>
 

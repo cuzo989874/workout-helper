@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next';
 
 import { formatDateAsNumeric } from '~/utils/dateUtils';
 
+import ChevronLeftIcon from '~/assets/google-fonts/chevron_left.svg?react';
+import ChevronRightIcon from '~/assets/google-fonts/chevron_right.svg?react';
 import styles from './DatePickerPopup.module.scss';
 
 export interface IDatePickerPopupRef {
@@ -188,7 +190,7 @@ const DatePickerPopup: React.FC<IDatePickerPopupProps> = ({
           aria-label={t('datePicker.previousMonth')}
           onClick={goToPreviousMonth}
         >
-          <i className="fas fa-chevron-left"></i>
+          <ChevronLeftIcon width={16} height={16} />
         </button>
         <span className={styles['date-picker-popup__month-year']}>
           {formatMonthYear(currentDate)}
@@ -199,7 +201,7 @@ const DatePickerPopup: React.FC<IDatePickerPopupProps> = ({
           aria-label={t('datePicker.nextMonth')}
           onClick={goToNextMonth}
         >
-          <i className="fas fa-chevron-right"></i>
+          <ChevronRightIcon width={16} height={16} />
         </button>
       </div>
 

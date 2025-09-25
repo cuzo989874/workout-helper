@@ -12,6 +12,18 @@ vi.mock('./DatePickerInput.module.scss', () => ({
   },
 }));
 
+vi.mock('~/assets/google-fonts/calendar_month.svg?react', () => ({
+  default: () => <svg data-testid="calendar-icon" />,
+}));
+
+vi.mock('~/assets/google-fonts/chevron_left.svg?react', () => ({
+  default: () => <svg data-testid="chevron-left-icon" />,
+}));
+
+vi.mock('~/assets/google-fonts/chevron_right.svg?react', () => ({
+  default: () => <svg data-testid="chevron-right-icon" />,
+}));
+
 vi.mock('react-i18next', () => ({
   useTranslation: () => ({
     t: (key: string) => key,
