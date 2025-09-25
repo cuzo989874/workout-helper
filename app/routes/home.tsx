@@ -24,7 +24,14 @@ export default function Home() {
 
   const [workoutList, setWorkoutList] = useState<IWorkout[]>([]);
 
-  const groupedWorkoutByDate = useMemo(() => lodash.groupBy(workoutList, 'date'), [workoutList]);
+  const groupedWorkoutByDate = useMemo(() => {
+    return lodash
+      .map(lodash.groupBy(workoutList, 'date'), (workout, date) => ({
+        date,
+        workout,
+      }))
+      .sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf());
+  }, [workoutList]);
 
   useEffect(() => {
     setWorkoutList(LocalStorageService.loadWorkouts() || []);
@@ -35,7 +42,7 @@ export default function Home() {
       <Header />
       <main className={styles['home-main']}>
         <ul>
-          {lodash.map(groupedWorkoutByDate, (workout, date) => (
+          {groupedWorkoutByDate.map(({ workout, date }) => (
             <li key={date}>
               <h2 className={styles['date-chip']}>{date}</h2>
               <ul className="flex flex-column gy-md">
