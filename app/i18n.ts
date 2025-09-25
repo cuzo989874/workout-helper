@@ -18,6 +18,8 @@ const resources = {
         edit: 'Edit',
         delete: 'Delete',
         save: 'Save',
+        add: 'Add',
+        prev: 'Prev',
       },
       calendar: {
         sun: 'Sun',
@@ -29,14 +31,23 @@ const resources = {
         sat: 'Sat',
       },
       workout: {
+        basicInfo: 'Basic Info',
+        fillInWorkoutDateAndDescription:
+          'Fill in workout date and description below.',
+        continueToAddExercises: 'Continue to Add Exercises',
+        skipAndAddLater: 'Skip & Add Later',
         date: 'Workout Date',
         description: 'Description',
+        descriptionPlaceholder: 'Workout description',
         exercise: {
           name: 'Exercise Name',
           category: 'Category',
           exerciseTime: 'Exercise Time',
           exerciseNotes: 'Exercise Notes',
         },
+        exercises: 'Exercises',
+        addExercise: 'Add Exercise',
+        addOrEditExercises: 'Add or edit exercises.',
         noExercises: 'There are no exercises in this workout.',
       },
       validation: {
@@ -117,6 +128,8 @@ const resources = {
         edit: '編輯',
         delete: '刪除',
         save: '儲存',
+        add: '新增',
+        prev: '回前頁',
       },
       calendar: {
         sun: '日',
@@ -128,14 +141,22 @@ const resources = {
         sat: '六',
       },
       workout: {
+        basicInfo: '基本資訊',
+        fillInWorkoutDateAndDescription: '請填寫訓練日期和描述。',
+        continueToAddExercises: '繼續新增運動',
+        skipAndAddLater: '跳過 & 稍後新增',
         date: '訓練日期',
         description: '描述',
+        descriptionPlaceholder: '訓練描述',
         exercise: {
           name: '運動名稱',
           category: '分類',
           exerciseTime: '運動時間',
           exerciseNotes: '運動筆記',
         },
+        exercises: '運動',
+        addExercise: '新增運動',
+        addOrEditExercises: '新增或編輯運動。',
         noExercises: '目前沒有任何運動在這次訓練中。',
       },
       validation: {

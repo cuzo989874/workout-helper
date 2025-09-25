@@ -51,7 +51,9 @@ export default function CreateWorkout() {
     }
     const workoutDateValidateResult = workoutDateInputRef.current.validate();
 
-    workoutDateInputRef.current.showError();
+    if (!workoutDateValidateResult.isValid) {
+      workoutDateInputRef.current.showError();
+    }
 
     return workoutDateValidateResult.isValid;
   };
@@ -61,14 +63,15 @@ export default function CreateWorkout() {
     exerciseFormEditIndexRef.current = -1;
   };
 
-  const editExercise = (exercise: IExercise) => {
-    exerciseFormModalRef.current?.open(exercise);
-    exerciseFormEditIndexRef.current = exerciseList.indexOf(exercise);
+  const editExerciseByIndex = (index: number) => {
+    const target = exerciseList[index];
+    if (!target) return;
+    exerciseFormModalRef.current?.open(target);
+    exerciseFormEditIndexRef.current = index;
   };
 
-  const deleteExercise = (exercise: IExercise) => {
-    console.log('delete exercise', exercise);
-    setExerciseList(exerciseList.filter(e => e !== exercise));
+  const deleteExerciseByIndex = (index: number) => {
+    setExerciseList(exerciseList.filter((_, i) => i !== index));
   };
 
   const handleExerciseSubmit = (exercise: IExercise) => {
@@ -107,13 +110,17 @@ export default function CreateWorkout() {
     <div>
       <SubPageHeader />
       <main className="p-md">
-        <Stepper onComplete={() => console.log('Stepper completed')}>
+        <Stepper>
           <Step>
-            <StepLabel>Basic Info</StepLabel>
+            <StepLabel>
+              {t('workout.basicInfo', { defaultValue: 'Basic Info' })}
+            </StepLabel>
             <p className="text--grey mb-md">
-              Fill in workout date and description below.
+              {t('workout.fillInWorkoutDateAndDescription', {
+                defaultValue: 'Fill in workout date and description below.',
+              })}
             </p>
-            <form>
+            <form onSubmit={e => e.preventDefault()}>
               <main className="stepper__main">
                 <FormDatePicker
                   ref={
@@ -128,7 +135,9 @@ export default function CreateWorkout() {
                 <FormInput
                   name="description"
                   label={t('workout.description')}
-                  placeholder="Workout description"
+                  placeholder={t('workout.descriptionPlaceholder', {
+                    defaultValue: 'Workout description',
+                  })}
                   value={description}
                   onChange={e => {
                     setDescription(e.target.value);
@@ -143,22 +152,30 @@ export default function CreateWorkout() {
                   type="submit"
                   className="btn btn-flat--primary w-100 stepper__button--next"
                 >
-                  Continue to Add Workout
+                  {t('workout.continueToAddExercises', {
+                    defaultValue: 'Continue to Add Workout',
+                  })}
                 </button>
                 <button
                   type="button"
                   className="btn btn--info w-100"
                   onClick={() => submit()}
                 >
-                  Skip & Add Later
+                  {t('workout.skipAndAddLater', {
+                    defaultValue: 'Skip & Add Later',
+                  })}
                 </button>
               </StepActions>
             </form>
           </Step>
           <Step>
-            <StepLabel>Exercises</StepLabel>
+            <StepLabel>
+              {t('workout.exercises', { defaultValue: 'Exercises' })}
+            </StepLabel>
             <p className="text--grey mb-md">
-              Add or edit exercises for this workout.
+              {t('workout.addOrEditExercises', {
+                defaultValue: 'Add or edit exercises for this workout.',
+              })}
             </p>
             <form onSubmit={submit}>
               <ul className="flex flex-column g-md mb-lg">
@@ -169,8 +186,8 @@ export default function CreateWorkout() {
                     <Card>
                       <ExerciseCard
                         exercise={exercise}
-                        onEdit={editExercise}
-                        onDelete={deleteExercise}
+                        onEdit={() => editExerciseByIndex(index)}
+                        onDelete={() => deleteExerciseByIndex(index)}
                       />
                     </Card>
                   </li>
@@ -181,8 +198,13 @@ export default function CreateWorkout() {
                 className="btn btn-outline btn-outline--info w-100"
                 onClick={() => addExercise()}
               >
-                <AddIcon width={18} height={18} fill="currentColor" />
-                Add Exercise
+                <AddIcon
+                  width={18}
+                  height={18}
+                  fill="currentColor"
+                  aria-hidden="true"
+                />
+                {t('workout.addExercise', { defaultValue: 'Add Exercise' })}
               </button>
 
               <StepActions className="stepper__actions--fixed align-center justify-between gx-md mt-md">
@@ -190,12 +212,22 @@ export default function CreateWorkout() {
                   type="button"
                   className="btn btn-primary stepper__button--back"
                 >
-                  <ChevronLeftIcon width={18} height={18} fill="currentColor" />
-                  Prev
+                  <ChevronLeftIcon
+                    width={18}
+                    height={18}
+                    fill="currentColor"
+                    aria-hidden="true"
+                  />
+                  {t('common.prev', { defaultValue: 'Prev' })}
                 </button>
                 <button type="submit" className="btn btn-flat--primary">
-                  <SaveIcon width={18} height={18} fill="currentColor" />
-                  Save
+                  <SaveIcon
+                    width={18}
+                    height={18}
+                    fill="currentColor"
+                    aria-hidden="true"
+                  />
+                  {t('common.save', { defaultValue: 'Save' })}
                 </button>
               </StepActions>
             </form>
