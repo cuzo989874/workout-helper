@@ -40,10 +40,9 @@ export const formatTimestampWithLanguage = (
     }
   }
 
-  return (new Intl.DateTimeFormat(language, options).format(date) as string).replace(
-    /\//g,
-    '-'
-  );
+  return (
+    new Intl.DateTimeFormat(language, options).format(date) as string
+  ).replace(/\//g, '-');
 };
 
 /**
@@ -59,23 +58,6 @@ export const useFormatTimestamp = () => {
   ) => {
     return formatTimestampWithLanguage(timestamp, i18n.language, format);
   };
-};
-
-/**
- * 獲取當前時區的日期（不使用 hook 的版本）
- * @param language 語系
- * @returns 當前時區的日期
- */
-export const getCurrentDateWithLanguage = () => {
-  return new Date().toLocaleString('en-US');
-};
-
-/**
- * 獲取當前時區的日期
- * @returns 當前時區的日期
- */
-export const useGetCurrentDate = () => {
-  return () => getCurrentDateWithLanguage();
 };
 
 /**

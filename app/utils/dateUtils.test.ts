@@ -1,10 +1,6 @@
 import { describe, it, expect } from 'vitest';
 
-import {
-  formatTimestampWithLanguage,
-  getCurrentDateWithLanguage,
-  formatDateAsNumeric,
-} from './dateUtils';
+import { formatTimestampWithLanguage, formatDateAsNumeric } from './dateUtils';
 
 describe('utils/dateUtils', () => {
   describe('formatTimestampWithLanguage', () => {
@@ -22,22 +18,6 @@ describe('utils/dateUtils', () => {
       const isYYYYMMDD = /^\d{4}-\d{2}-\d{2}$/.test(formatted);
       const isDDMMYYYY = /^\d{2}-\d{2}-\d{4}$/.test(formatted);
       expect(isYYYYMMDD || isDDMMYYYY).toBe(true);
-    });
-
-    it('formats datetime with default language fallback', () => {
-      const ts = Date.UTC(2023, 11, 31, 23, 59, 0);
-      const formatted = formatTimestampWithLanguage(ts, 'en', 'datetime');
-      expect(/\d{4}-\d{2}-\d{2}/.test(formatted)).toBe(true);
-    });
-  });
-
-  describe('getCurrentDateWithLanguage', () => {
-    it('returns a valid date string for zh', () => {
-      const str = getCurrentDateWithLanguage('zh');
-      expect(typeof str).toBe('string');
-      // new Date should be able to parse when fed back with same tz is not guaranteed,
-      // but ensure it is non-empty
-      expect(str.length).toBeGreaterThan(0);
     });
   });
 

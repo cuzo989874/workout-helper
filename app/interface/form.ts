@@ -5,7 +5,6 @@ export interface IFormFieldPropsBase {
   className?: string;
   label?: string;
   labelTooltip?: string;
-  onLabelTooltipClick?: () => void;
   hint?: string;
   error?: string;
   errorLabel?: string;
