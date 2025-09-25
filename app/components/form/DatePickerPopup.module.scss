@@ -1,0 +1,130 @@
+@use 'sass:map';
+
+@use '../../../styles/abstracts/variables' as *;
+@use '../../../styles/abstracts/mixins' as *;
+
+.date-picker-popup {
+  position: absolute;
+  z-index: 1000;
+  width: 280px;
+  background-color: $bg-white;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin-top: $spacing-sm;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-md;
+    border-bottom: 1px solid $border-color;
+  }
+
+  &__nav-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: $border-radius;
+    background-color: transparent;
+    color: $text-grey;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: $button-hover;
+      color: $primary-green;
+    }
+
+    &:focus {
+      outline: none;
+      background-color: $button-hover;
+      color: $primary-green;
+    }
+
+    i {
+      font-size: 12px;
+    }
+  }
+
+  &__month-year {
+    font-weight: $font-weight-bold;
+    color: $text-dark;
+    font-size: $font-size-base;
+  }
+
+  &__weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: $spacing-sm 0;
+    border-bottom: 1px solid $border-color;
+  }
+
+  &__weekday {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    font-size: 12px;
+    font-weight: $font-weight-bold;
+    color: $text-grey;
+    text-transform: uppercase;
+  }
+
+  &__days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: $spacing-sm;
+  }
+
+  &__day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    font-size: $font-size-base;
+    color: $text-dark;
+    cursor: pointer;
+    border-radius: $border-radius;
+    transition: all 0.2s ease;
+
+    &:hover:not(&--empty):not(&--disabled) {
+      background-color: $button-hover;
+    }
+
+    &--empty {
+      cursor: default;
+    }
+
+    &--disabled {
+      color: $text-light-grey;
+      cursor: not-allowed;
+      background-color: $bg-grey;
+    }
+
+    &--selected {
+      background-color: $primary-green;
+      color: $text-white;
+      font-weight: $font-weight-bold;
+
+      &:hover {
+        background-color: $dark-green;
+      }
+    }
+
+    &--today {
+      border: 2px solid $primary-green;
+      font-weight: $font-weight-bold;
+    }
+  }
+}
+
+// 響應式設計
+@media (max-width: $breakpoint-sm) {
+  .date-picker-popup {
+    width: 260px;
+  }
+} 

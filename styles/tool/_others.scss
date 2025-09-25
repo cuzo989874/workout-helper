@@ -1,0 +1,25 @@
+@use "../abstracts/variables";
+
+.clickable {
+  cursor: pointer;
+}
+
+.w-100 {
+  width: 100% !important;
+}
+
+.width-fit-content {
+  width: fit-content !important;
+}
+
+@media (min-width: variables.$breakpoint-sm) {
+  .mobile-show {
+    display: none !important;
+  }
+}
+
+@media (max-width: variables.$breakpoint-sm) {
+  .mobile-hide {
+    display: none !important;
+  }
+}
