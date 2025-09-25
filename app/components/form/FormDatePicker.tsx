@@ -1,11 +1,14 @@
 import React, { useRef } from 'react';
 
-import FormField from './FormField';
+import FormField, { type IFormFieldRef } from './FormField';
 
 import DatePickerInput, { type IDatePickerInputRef } from './DatePickerInput';
 
+export interface IFormDatePickerRef extends IFormFieldRef {}
+
 interface IFormDatePickerProps {
   id?: string;
+  ref?: React.Ref<IFormDatePickerRef>;
   name: string;
   className?: string;
   label: string;
@@ -23,6 +26,7 @@ interface IFormDatePickerProps {
 const FormDatePicker: React.FC<IFormDatePickerProps> = ({
   id,
   name,
+  ref,
   className,
   label,
   placeholder,
@@ -41,9 +45,11 @@ const FormDatePicker: React.FC<IFormDatePickerProps> = ({
   return (
     <FormField
       id={id}
+      ref={ref as React.RefObject<IFormFieldRef>}
       className={className}
       label={label}
       hint={hint}
+      value={value}
       error={currentError}
       required={required}
     >

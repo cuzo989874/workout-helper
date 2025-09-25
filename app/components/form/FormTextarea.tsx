@@ -40,6 +40,7 @@ const FormTextarea: React.FC<IFormTextareaProps> = ({
       id={id}
       className={className}
       label={label}
+      value={value}
       hint={hint}
       error={error}
       errorLabel={errorLabel}

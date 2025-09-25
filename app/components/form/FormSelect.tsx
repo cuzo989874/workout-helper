@@ -41,8 +41,6 @@ function FormSelect<
   className,
   value,
   label,
-  labelTooltip,
-  onLabelTooltipClick,
   placeholder,
   hint,
   error,
@@ -93,8 +91,7 @@ function FormSelect<
       id={id}
       className={className}
       label={label}
-      labelTooltip={labelTooltip}
-      onLabelTooltipClick={onLabelTooltipClick}
+      value={value}
       hint={hint}
       error={error}
       errorLabel={errorLabel}

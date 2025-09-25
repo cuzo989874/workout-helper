@@ -43,7 +43,7 @@ describe('當：FormField 組件', () => {
 
   it('應該：正確渲染基本內容', () => {
     render(
-      <FormField id="test" label="標籤" required>
+      <FormField id="test" label="標籤" value="" required>
         <input value="" onChange={() => {}} />
       </FormField>
     );

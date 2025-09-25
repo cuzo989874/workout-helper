@@ -7,9 +7,10 @@ import React, {
 } from 'react';
 import { createPortal } from 'react-dom';
 
-import FormField from './FormField';
+import FormField, { type IFormFieldRef } from './FormField';
 
 import styles from './FormAutocomplete.module.scss';
+import type { IFormFieldPropsBase } from '~/interface/form';
 
 // 選項介面，支援 value 和 label 分離
 interface IAutocompleteOption {
@@ -17,19 +18,15 @@ interface IAutocompleteOption {
   label: string;
 }
 
-interface IFormAutocompleteProps {
-  id?: string;
+interface IFormAutocompleteRef extends IFormFieldRef {}
+
+interface IFormAutocompleteProps extends IFormFieldPropsBase {
+  ref?: React.RefObject<IFormAutocompleteRef>;
   name: string;
-  className?: string;
   placeholder?: string;
   emptyPlaceholder?: string;
-  label: string;
-  hint?: string;
-  error?: string;
   value: string;
   options: string[] | IAutocompleteOption[];
-  required?: boolean;
-  disabled?: boolean;
   onChange: (value: string) => void;
   onSelect?: (value: string) => void;
   // 新增的格式化函數
@@ -50,11 +47,14 @@ const FormAutocomplete: React.FC<IFormAutocompleteProps> = ({
   options,
   required = false,
   disabled = false,
+  validators = [],
   onChange,
   onSelect,
   valueFormat,
   labelFormat,
 }) => {
+  const formFieldRef = useRef<IFormFieldRef>(null);
+
   const [isOpen, setIsOpen] = useState(false);
   const [filteredOptions, setFilteredOptions] = useState<IAutocompleteOption[]>(
     []
@@ -194,6 +194,9 @@ const FormAutocomplete: React.FC<IFormAutocompleteProps> = ({
       setInputValue(displayLabel);
       onChange(formattedValue);
       onSelect?.(formattedValue);
+      setTimeout(() => {
+        formFieldRef.current?.validate();
+      }, 100);
       setIsOpen(false);
       setSelectedIndex(-1);
     },
@@ -264,7 +267,8 @@ const FormAutocomplete: React.FC<IFormAutocompleteProps> = ({
 
   // 處理點擊外部關閉下拉選單
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    if (!dropdownRef.current && !inputRef.current) return;
+    const outsideBehavior = (event: MouseEvent | Event) => {
       if (
         dropdownRef.current &&
         !dropdownRef.current.contains(event.target as Node) &&
@@ -277,7 +281,8 @@ const FormAutocomplete: React.FC<IFormAutocompleteProps> = ({
     };
 
     if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('mousedown', outsideBehavior);
+      window.addEventListener('scroll', outsideBehavior, true);
       const currentIndex = filteredOptions.findIndex(
         option => option.value === inputValue || option.label === inputValue
       );
@@ -286,7 +291,8 @@ const FormAutocomplete: React.FC<IFormAutocompleteProps> = ({
     }
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('mousedown', outsideBehavior);
+      document.removeEventListener('scroll', outsideBehavior);
     };
   }, [isOpen, filteredOptions, inputValue, scrollToSelectedOption]);
 
@@ -308,12 +314,23 @@ const FormAutocomplete: React.FC<IFormAutocompleteProps> = ({
   return (
     <>
       <FormField
+        ref={formFieldRef as React.RefObject<IFormFieldRef>}
         id={id}
         className={className}
         label={label}
+        value={value}
         hint={hint}
         error={error}
         required={required}
+        validators={validators}
+        checkValidity={() => inputRef.current?.checkValidity() ?? false}
+        reportValidity={() => {
+          if (inputRef.current) {
+            inputRef.current.reportValidity();
+            return true;
+          }
+          return false;
+        }}
       >
         <input
           ref={inputRef}
@@ -328,6 +345,11 @@ const FormAutocomplete: React.FC<IFormAutocompleteProps> = ({
           onFocus={() => {
             if (filteredOptions.length > 0) {
               setIsOpen(true);
+            }
+          }}
+          onBlur={event => {
+            if (event.relatedTarget !== null) {
+              setIsOpen(false);
             }
           }}
           disabled={disabled}

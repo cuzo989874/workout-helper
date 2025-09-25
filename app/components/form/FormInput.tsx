@@ -14,6 +14,7 @@ interface IFormInputProps extends IFormFieldPropsBase {
   value: string | number;
   min?: string | number;
   max?: string | number;
+  suffix?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -35,6 +36,7 @@ const FormInput: React.FC<IFormInputProps> = ({
   required = false,
   disabled = false,
   validators = [],
+  suffix,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -44,6 +46,7 @@ const FormInput: React.FC<IFormInputProps> = ({
       id={id}
       className={className}
       label={label}
+      value={value}
       hint={hint}
       error={error}
       errorLabel={errorLabel}
@@ -58,21 +61,24 @@ const FormInput: React.FC<IFormInputProps> = ({
         return false;
       }}
     >
-      <input
-        ref={inputRef}
-        id={id || name}
-        name={name}
-        className="form-field__input"
-        type={type}
-        value={value}
-        placeholder={placeholder}
-        min={min}
-        max={max}
-        required={required}
-        disabled={disabled}
-        onChange={onChange}
-        data-testid={`form-input-${name}`}
-      />
+      <div className="form-field__input-container">
+        <input
+          ref={inputRef}
+          id={id || name}
+          name={name}
+          className={`form-field__input ${suffix ? 'form-field__input--with-suffix' : ''}`}
+          type={type}
+          value={value}
+          placeholder={placeholder}
+          min={min}
+          max={max}
+          required={required}
+          disabled={disabled}
+          onChange={onChange}
+          data-testid={`form-input-${name}`}
+        />
+        {!!suffix && <span className="form-field__suffix">{suffix}</span>}
+      </div>
     </FormField>
   );
 };

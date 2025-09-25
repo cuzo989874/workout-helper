@@ -20,6 +20,7 @@ export interface IFormFieldRef {
 // 擴展 props 介面以包含 ref
 interface IFormFieldPropsWithRef extends IFormFieldProps {
   ref?: React.RefObject<IFormFieldRef>;
+  value?: TValidationValue;
 }
 
 const FormField: React.FC<IFormFieldPropsWithRef> = ({
@@ -28,6 +29,7 @@ const FormField: React.FC<IFormFieldPropsWithRef> = ({
   className,
   label,
   hint,
+  value,
   error,
   errorLabel,
   children,
@@ -61,15 +63,7 @@ const FormField: React.FC<IFormFieldPropsWithRef> = ({
   }, [required, validators]);
 
   useImperativeHandle(ref, () => ({
-    validate: () => {
-      const childElement = React.Children.toArray(
-        children
-      )[0] as React.ReactHTMLElement<
-        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-      >;
-      const value = childElement.props.value as TValidationValue;
-      return validate(value);
-    },
+    validate: () => validate(value),
     error: validationError,
     showError: () => {
       setShouldShowError(true);
@@ -125,7 +119,7 @@ const FormField: React.FC<IFormFieldPropsWithRef> = ({
   });
 
   return (
-    <div className={fieldClassName} data-testid={`form-field-${id || name}`}>
+    <div className={fieldClassName} data-testid={`form-field-${id}`}>
       {label && (
         <label htmlFor={id} className="form-field__label">
           {label}
