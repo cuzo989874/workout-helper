@@ -1,7 +1,7 @@
 @use 'sass:map';
 
-@use '../../styles/abstracts/variables' as *;
-@use '../../styles/abstracts/mixins' as *;
+@use '../../../styles/abstracts/variables' as *;
+@use '../../../styles/abstracts/mixins' as *;
 
 .form-date-picker {
   position: relative;
