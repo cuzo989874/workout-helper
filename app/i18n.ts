@@ -7,12 +7,62 @@ import { initReactI18next } from 'react-i18next';
 const resources = {
   en: {
     translation: {
-      'Welcome to React': 'Welcome to React and react-i18next',
+      common: {
+        back: 'Back',
+        minutes: 'minutes',
+        minutesShort: 'min',
+        seconds: 'seconds',
+        secondsShort: 'sec',
+        meters: 'meters',
+        submit: 'Submit',
+        edit: 'Edit',
+        delete: 'Delete',
+        save: 'Save',
+      },
+      calendar: {
+        sun: 'Sun',
+        mon: 'Mon',
+        tue: 'Tue',
+        wed: 'Wed',
+        thu: 'Thu',
+        fri: 'Fri',
+        sat: 'Sat',
+      },
+      validation: {
+        required: '{{label}} is required.',
+        minLength: 'Minimum length is {{min}} characters.',
+        maxLength: 'Maximum length is {{max}} characters.',
+      },
     },
   },
   'zh-tw': {
     translation: {
-      'Welcome to React': 'Bienvenue à React et react-i18next',
+      common: {
+        back: '返回',
+        minutes: '分鐘',
+        minutesShort: '分',
+        seconds: '秒',
+        secondsShort: '秒',
+        meters: '公尺',
+        submit: '提交',
+        edit: '編輯',
+        delete: '刪除',
+        save: '儲存',
+      },
+      calendar: {
+        sun: '日',
+        mon: '一',
+        tue: '二',
+        wed: '三',
+        thu: '四',
+        fri: '五',
+        sat: '六',
+      },
+      validation: {
+        required: '{{label}} 是必填的。',
+        minLength: '至少需要輸入 {{min}} 個字元。',
+        maxLength: '最多只能輸入 {{max}} 個字元。',
+      },
     },
   },
 };
