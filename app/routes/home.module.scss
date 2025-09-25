@@ -16,3 +16,26 @@
   text-align: center;
   width: fit-content;
 }
+
+.floating-action-button {
+  position: fixed;
+  bottom: $spacing-lg;
+  right: $spacing-lg;
+  z-index: 1000;
+  color: $bg-white;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $border-radius-circle;
+  padding: $spacing-sm;
+  box-shadow: $card-shadow;
+  cursor: pointer;
+  transition: $transition-fast;
+  background-color: $primary-green;
+
+  &:hover {
+    background-color: $dark-green;
+  }
+}

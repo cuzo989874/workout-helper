@@ -1,4 +1,4 @@
 export interface IStorageData<T> {
-  version: number;
+  version: string;
   data: T;
 }
