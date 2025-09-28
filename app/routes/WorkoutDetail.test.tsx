@@ -139,4 +139,76 @@ describe('當：WorkoutDetail 路由頁面', () => {
 
     expect(mockNavigate).toHaveBeenCalledWith(`/workout/update/${workout.id}`);
   });
+
+  it('當：訓練有有效的組數時，應該：顯示開始訓練按鈕', () => {
+    const workoutWithSets: IWorkout = {
+      ...workout,
+      exerciseList: [
+        {
+          ...workout.exerciseList[0],
+          setSettingList: [{ weightLifted: 50, reps: 5, restTime: 60 }],
+        },
+      ],
+    };
+    mockParams = { id: workoutWithSets.id };
+    vi.spyOn(LocalStorageService, 'loadWorkouts').mockReturnValue([
+      workoutWithSets,
+    ]);
+
+    render(<WorkoutDetail />);
+
+    expect(
+      screen.getByRole('button', { name: 'workout.startWorkout' })
+    ).toBeInTheDocument();
+  });
+
+  it('當：訓練沒有有效的組數時，應該：不顯示開始訓練按鈕', () => {
+    const workoutWithoutSets: IWorkout = {
+      ...workout,
+      exerciseList: [
+        {
+          ...workout.exerciseList[0],
+          setSettingList: [],
+        },
+      ],
+    };
+    mockParams = { id: workoutWithoutSets.id };
+    vi.spyOn(LocalStorageService, 'loadWorkouts').mockReturnValue([
+      workoutWithoutSets,
+    ]);
+
+    render(<WorkoutDetail />);
+
+    expect(
+      screen.queryByRole('button', { name: 'workout.startWorkout' })
+    ).not.toBeInTheDocument();
+  });
+
+  it('當：點擊開始訓練按鈕，應該：導向計時器頁面', async () => {
+    const user = userEvent.setup();
+    const workoutWithSets: IWorkout = {
+      ...workout,
+      exerciseList: [
+        {
+          ...workout.exerciseList[0],
+          setSettingList: [{ weightLifted: 50, reps: 5, restTime: 60 }],
+        },
+      ],
+    };
+    mockParams = { id: workoutWithSets.id };
+    vi.spyOn(LocalStorageService, 'loadWorkouts').mockReturnValue([
+      workoutWithSets,
+    ]);
+
+    render(<WorkoutDetail />);
+
+    const startWorkoutBtn = screen.getByRole('button', {
+      name: 'workout.startWorkout',
+    });
+    await user.click(startWorkoutBtn);
+
+    expect(mockNavigate).toHaveBeenCalledWith(
+      `/workout/timer/${workoutWithSets.id}`
+    );
+  });
 });

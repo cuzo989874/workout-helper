@@ -5,4 +5,5 @@ export default [
   route('workout/:id', 'routes/WorkoutDetail.tsx'),
   route('workout/create', 'routes/createWorkout.tsx'),
   route('workout/update/:id', 'routes/updateWorkout.tsx'),
+  route('workout/timer/:id', 'routes/timer.tsx'),
 ] satisfies RouteConfig;

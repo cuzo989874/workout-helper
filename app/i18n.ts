@@ -51,6 +51,8 @@ const resources = {
         addExercise: 'Add Exercise',
         addOrEditExercises: 'Add or edit exercises.',
         noExercises: 'There are no exercises in this workout.',
+        startWorkout: 'Start Workout',
+        timer: 'Timer',
       },
       validation: {
         required: '{{label}} is required.',
@@ -162,6 +164,8 @@ const resources = {
         addExercise: '新增運動',
         addOrEditExercises: '新增或編輯運動。',
         noExercises: '目前沒有任何運動在這次訓練中。',
+        startWorkout: '開始訓練',
+        timer: '計時器',
       },
       validation: {
         required: '{{label}} 是必填的。',

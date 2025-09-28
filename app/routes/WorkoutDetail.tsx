@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
 
@@ -20,6 +20,15 @@ export default function WorkoutDetail() {
   const workoutId = useMemo(() => params.id ?? '', [params.id]);
 
   const [workout, setWorkout] = useState<IWorkout | null>(null);
+
+  const hasValidSets = useMemo(() => {
+    if (!workout || !workout.exerciseList) {
+      return false;
+    }
+    return workout.exerciseList.some(
+      exercise => exercise.setSettingList && exercise.setSettingList.length > 0
+    );
+  }, [workout]);
 
   useEffect(() => {
     const list = LocalStorageService.loadWorkouts() || [];
@@ -55,6 +64,14 @@ export default function WorkoutDetail() {
             <DeleteIcon width={18} height={18} fill="currentColor" />
             {t('common.delete')}
           </button>
+          {hasValidSets && (
+            <button
+              className="btn btn--primary"
+              onClick={() => navigate(`/workout/timer/${workout.id}`)}
+            >
+              {t('workout.startWorkout')}
+            </button>
+          )}
           <button
             className="btn btn-flat--primary"
             onClick={() => navigate(`/workout/update/${workout.id}`)}
