@@ -41,7 +41,7 @@ const mockWorkout: IWorkout = {
       category: 'Weightlifting',
       exerciseTime: '00:00',
       notes: '',
-      setSettingList: [{ reps: 10, weight: 100 }],
+      setSettingList: [{ reps: 10, weightLifted: 100 }],
     },
   ],
 };
