@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { Stepper, Step, StepLabel, StepActions } from './Stepper';
 
 describe('當：Stepper 元件 (Material-like)', () => {

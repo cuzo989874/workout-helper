@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, act } from '@testing-library/react';
 import { describe, it, expect, vi, afterEach } from 'vitest';
 import FormInput, { type IFormInputRef } from './FormInput';
 
@@ -106,8 +106,9 @@ describe('當：FormInput 組件', () => {
         onChange={onChange}
       />
     );
-    ref.current?.showError();
-    await new Promise(resolve => setTimeout(resolve, 0));
+    await act(async () => {
+      ref.current?.showError();
+    });
     expect(screen.getByText(error)).toBeInTheDocument();
   });
 
@@ -228,11 +229,12 @@ describe('當：FormInput 組件', () => {
         />
       );
 
-      ref.current?.validate();
-      ref.current?.showError();
+      await act(async () => {
+        ref.current?.validate();
+        ref.current?.showError();
+      });
 
       expect(mockValidator).toHaveBeenCalledWith('test');
-      await new Promise(resolve => setTimeout(resolve, 0));
       expect(screen.getByText('validation.unknown')).toBeInTheDocument();
     });
   });
