@@ -1,6 +1,12 @@
 import React from 'react';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, screen, fireEvent, cleanup } from '@testing-library/react';
+import {
+  render,
+  screen,
+  fireEvent,
+  cleanup,
+  act,
+} from '@testing-library/react';
 
 import FormSelect, { type IFormSelectRef } from './FormSelect';
 
@@ -216,8 +222,9 @@ describe('當：FormSelect 組件', () => {
       />
     );
 
-    ref.current?.showError();
-    await new Promise(resolve => setTimeout(resolve, 0));
+    await act(async () => {
+      ref.current?.showError();
+    });
     expect(screen.getByText('這是錯誤訊息')).toBeInTheDocument();
   });
 
@@ -412,11 +419,12 @@ describe('當：FormSelect 組件', () => {
         />
       );
 
-      ref.current?.validate();
-      ref.current?.showError();
+      await act(async () => {
+        ref.current?.validate();
+        ref.current?.showError();
+      });
 
       expect(mockValidator).toHaveBeenCalled();
-      await new Promise(resolve => setTimeout(resolve, 0));
       expect(ref.current?.error).toBe('validation.unknown');
     });
   });
