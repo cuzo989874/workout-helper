@@ -1,6 +1,11 @@
 import '@testing-library/jest-dom';
 import { vi, beforeAll, afterAll } from 'vitest';
 
+// TODO: Fix React 19 compatibility
+// React 19.1.1 removed React.act from exports, causing all component tests to fail
+// Need to update @testing-library/react to a version that supports React 19
+// See docs/log/notepad.md for details
+
 // Mock localStorage
 const localStorageMock = (() => {
   let store: { [key: string]: string } = {};
@@ -21,6 +26,10 @@ const localStorageMock = (() => {
 let originalError: typeof console.error;
 
 beforeAll(() => {
+  // Set IS_REACT_ACT_ENVIRONMENT for React 19
+  // @ts-expect-error - React 19 compatibility
+  globalThis.IS_REACT_ACT_ENVIRONMENT = true;
+
   Object.defineProperty(globalThis, 'localStorage', {
     value: localStorageMock,
     writable: true,

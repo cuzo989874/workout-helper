@@ -9,7 +9,66 @@
   background-color: $bg-white;
   border-bottom: 1px solid $border-color;
 
-  & > h1 {
+  & > a > h1 {
     font-size: $font-size-xl;
+    margin: 0;
+  }
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.view-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 40px;
+  padding: $spacing-xs;
+  border-radius: $border-radius-md;
+  color: $text-dark;
+  transition: $transition-fast;
+
+  &:hover {
+    background-color: rgba($primary-green, 20%);
+    color: $primary-green;
+  }
+
+  &:focus {
+    outline: 2px solid $primary-green;
+    outline-offset: 2px;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.icon-active {
+  color: $primary-green;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .header {
+    padding: $spacing-xs $spacing-sm;
+  }
+
+  .header > a > h1 {
+    font-size: $font-size-lg;
+  }
+
+  .view-toggle-btn {
+    min-width: 36px;
+    min-height: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header > a > h1 {
+    font-size: $font-size-base;
   }
 }

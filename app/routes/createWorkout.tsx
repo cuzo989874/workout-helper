@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate, useSearchParams } from 'react-router';
 import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
 
@@ -35,13 +35,18 @@ import SaveIcon from '~/assets/google-fonts/save.svg?react';
 export default function CreateWorkout() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   const workoutDateInputRef = useRef<IFormDatePickerRef>(null);
 
   const exerciseFormModalRef = useRef<IExerciseFormModalRef>(null);
   const exerciseFormEditIndexRef = useRef<number>(-1);
 
-  const [date, setDate] = useState(formatDateAsNumeric(new Date()));
+  // Pre-populate date from query parameter if provided (from calendar)
+  const dateFromQuery = searchParams.get('date');
+  const [date, setDate] = useState(
+    dateFromQuery || formatDateAsNumeric(new Date())
+  );
   const [description, setDescription] = useState('');
   const [exerciseList, setExerciseList] = useState<IExercise[]>([]);
 

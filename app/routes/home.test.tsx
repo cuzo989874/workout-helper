@@ -11,6 +11,10 @@ vi.mock('~/assets/google-fonts/add.svg?react', () => ({
   default: () => <svg data-testid="add-icon" />,
 }));
 
+vi.mock('~/assets/google-fonts/calendar_month.svg?react', () => ({
+  default: () => <svg data-testid="calendar-icon" />,
+}));
+
 // Mock WorkoutCard to keep Home tests focused on integration behavior
 vi.mock('~/components/feature/WorkoutCard', () => ({
   default: ({ workout }: { workout: IWorkout }) => (
@@ -20,11 +24,13 @@ vi.mock('~/components/feature/WorkoutCard', () => ({
   ),
 }));
 
-// Mock useNavigate from react-router
+// Mock useNavigate, useLocation from react-router
 const mockNavigate = vi.fn();
+const mockLocation = vi.fn();
 vi.mock('react-router', async () => {
   return {
     useNavigate: () => mockNavigate,
+    useLocation: () => mockLocation,
   } as unknown as typeof import('react-router');
 });
 

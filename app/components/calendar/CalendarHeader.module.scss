@@ -1,0 +1,73 @@
+@use '../../../styles/abstracts/variables' as *;
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-md;
+  background-color: $bg-white;
+  border-bottom: 2px solid $border-color;
+  gap: $spacing-md;
+}
+
+.nav-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 40px;
+  padding: $spacing-xs;
+  border-radius: $border-radius-md;
+  transition: $transition-fast;
+
+  &:hover {
+    background-color: rgba($primary-green, 20%);
+  }
+}
+
+.month-year-display {
+  flex: 1;
+
+  h2 {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $text-dark;
+    margin: 0;
+  }
+}
+
+.today-button {
+  padding: $spacing-sm $spacing-md;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-normal;
+  white-space: nowrap;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .calendar-header {
+    padding: $spacing-sm;
+    gap: $spacing-sm;
+  }
+
+  .month-year-display h2 {
+    font-size: $font-size-lg;
+  }
+
+  .nav-button {
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  .today-button {
+    padding: 2px $spacing-sm;
+    font-size: $font-size-sm;
+  }
+}
+
+@media (max-width: 480px) {
+  .month-year-display {
+    flex-basis: 100%;
+    margin-bottom: $spacing-xs;
+  }
+}

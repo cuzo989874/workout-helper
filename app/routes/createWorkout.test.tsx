@@ -22,9 +22,12 @@ vi.mock('~/assets/google-fonts/calendar_month.svg?react', () => ({
 
 // Mock useNavigate from react-router
 const mockNavigate = vi.fn();
+// Mock useSearchParams from react-router
+const mockSearchParams = [new URLSearchParams(), vi.fn()];
 vi.mock('react-router', async () => {
   return {
     useNavigate: () => mockNavigate,
+    useSearchParams: () => mockSearchParams,
   } as unknown as typeof import('react-router');
 });
 
