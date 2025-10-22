@@ -1,0 +1,74 @@
+@use "../../styles/abstracts/variables";
+
+.header {
+  display: flex;
+  min-height: 48px;
+  justify-content: space-between;
+  align-items: center;
+  padding: variables.$spacing-sm variables.$spacing-md;
+  background-color: variables.$bg-white;
+  border-bottom: 1px solid variables.$border-color;
+
+  & > a > h1 {
+    font-size: variables.$font-size-xl;
+    margin: 0;
+  }
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: variables.$spacing-sm;
+}
+
+.view-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 40px;
+  padding: variables.$spacing-xs;
+  border-radius: variables.$border-radius-md;
+  color: variables.$text-dark;
+  transition: variables.$transition-fast;
+
+  &:hover {
+    background-color: rgba(variables.$primary-green, 20%);
+    color: variables.$primary-green;
+  }
+
+  &:focus {
+    outline: 2px solid variables.$primary-green;
+    outline-offset: 2px;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.icon-active {
+  color: variables.$primary-green;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .header {
+    padding: variables.$spacing-xs variables.$spacing-sm;
+  }
+
+  .header > a > h1 {
+    font-size: variables.$font-size-lg;
+  }
+
+  .view-toggle-btn {
+    min-width: 36px;
+    min-height: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header > a > h1 {
+    font-size: variables.$font-size-base;
+  }
+}

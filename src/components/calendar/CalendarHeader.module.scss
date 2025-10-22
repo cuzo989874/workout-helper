@@ -1,0 +1,73 @@
+@use "../../styles/abstracts/variables";
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: variables.$spacing-md;
+  background-color: variables.$bg-white;
+  border-bottom: 2px solid variables.$border-color;
+  gap: variables.$spacing-md;
+}
+
+.nav-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 40px;
+  padding: variables.$spacing-xs;
+  border-radius: variables.$border-radius-md;
+  transition: variables.$transition-fast;
+
+  &:hover {
+    background-color: rgba(variables.$primary-green, 20%);
+  }
+}
+
+.month-year-display {
+  flex: 1;
+
+  h2 {
+    font-size: variables.$font-size-xl;
+    font-weight: variables.$font-weight-bold;
+    color: variables.$text-dark;
+    margin: 0;
+  }
+}
+
+.today-button {
+  padding: variables.$spacing-sm variables.$spacing-md;
+  font-size: variables.$font-size-sm;
+  font-weight: variables.$font-weight-normal;
+  white-space: nowrap;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .calendar-header {
+    padding: variables.$spacing-sm;
+    gap: variables.$spacing-sm;
+  }
+
+  .month-year-display h2 {
+    font-size: variables.$font-size-lg;
+  }
+
+  .nav-button {
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  .today-button {
+    padding: 2px variables.$spacing-sm;
+    font-size: variables.$font-size-sm;
+  }
+}
+
+@media (max-width: 480px) {
+  .month-year-display {
+    flex-basis: 100%;
+    margin-bottom: variables.$spacing-xs;
+  }
+}
