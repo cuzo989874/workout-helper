@@ -1,0 +1,23 @@
+@use "../abstracts/variables";
+
+.card {
+  background: variables.$bg-white;
+  border-radius: variables.$border-radius;
+  box-shadow: variables.$card-shadow;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+
+  &--auto-height {
+    height: auto;
+  }
+
+  &__header {
+    padding: variables.$spacing-md variables.$spacing-md variables.$spacing-sm;
+  }
+
+  &__body {
+    padding: variables.$spacing-sm variables.$spacing-md;
+  }
+}

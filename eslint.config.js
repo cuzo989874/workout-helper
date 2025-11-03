@@ -28,7 +28,7 @@ export default defineConfig([
     }
   },
   {
-    files: ['app/**/*.{ts,mts,cts,tsx}'],
+    files: ['**/*.{ts,mts,cts,tsx}'],
     languageOptions: {
       globals: {
         ...globals.browser,
@@ -42,24 +42,6 @@ export default defineConfig([
         },
         tsconfigRootDir: __dirname,
         project: './tsconfig.json'
-      }
-    },
-    ignores: ['**/*.test.ts', '**/*.test.tsx', '**/*.spec.ts', '**/*.spec.tsx', 'app/test/**/*']
-  },
-  {
-    files: ['**/*.test.{ts,tsx}', '**/*.spec.{ts,tsx}', 'app/test/**/*.{ts,tsx}'],
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-        ...globals.node
-      },
-      parserOptions: {
-        ecmaVersion: 'latest',
-        sourceType: 'module',
-        ecmaFeatures: {
-          jsx: true
-        },
-        tsconfigRootDir: __dirname
       }
     }
   },
@@ -93,7 +75,7 @@ export default defineConfig([
       ],
 
       ...configPrettier.rules, // 必須放在最後，以覆蓋其他規則
-    },
+    }
   },
   {
     files: ['**/*.{jsx,tsx}'],
@@ -103,7 +85,7 @@ export default defineConfig([
     },
     settings: {
       react: {
-        version: '18.3.1'
+        version: '19.1.0'
       }
     },
     rules: {
@@ -117,7 +99,6 @@ export default defineConfig([
   },
   {
     ignores: [
-      '.react-router/**/*',
       'node_modules/**/*',
       'coverage/**/*',
       'dist/**/*',

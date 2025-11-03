@@ -19,8 +19,8 @@ Following these standard operating procedures (SOPs) helps maintain a clean and 
 ### How to Create a New Component
 
 1. **Choose a location**: 
-    - For generic, reusable components, use `app/components/` (e.g., a new `Button` or `Modal`).
-    - For components tied to a specific feature, use `app/components/feature/` (e.g., `DailySummaryCard`).
+    - For generic, reusable components, use `src/components/` (e.g., a new `Button` or `Modal`).
+    - For components tied to a specific feature, use `src/components/feature/` (e.g., `DailySummaryCard`).
 2. **Create the files**: Create a new folder for your component and add the necessary files. For a component named `MyComponent`, you would create:
     - `MyComponent.tsx`: The component's logic and JSX.
     - `MyComponent.module.scss`: Scoped styles for the component.
@@ -29,11 +29,11 @@ Following these standard operating procedures (SOPs) helps maintain a clean and 
 
 ### How to Create a New Page (Route)
 
-1. **Create the page component**: Add a new `.tsx` file in the `app/routes/` directory (e.g., `ProfilePage.tsx`). This component will represent the new page.
-2. **Register the route**: Open `app/routes.ts` and add a new route definition that maps a URL path to your newly created page component.
+1. **Create the page component**: Add a new `.tsx` file in the `src/routes/` directory (e.g., `ProfilePage.tsx`). This component will represent the new page.
+2. **Register the route**: Open `src/routes.ts` and add a new route definition that maps a URL path to your newly created page component.
 
     ```typescript
-    // app/routes.ts
+    // src/routes.ts
     import { type RouteConfig, index, route } from '@react-router/dev/routes';
 
     export default [

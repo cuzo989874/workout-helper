@@ -1,0 +1,41 @@
+@use "../styles/abstracts/variables";
+
+.home-main {
+  padding-bottom: 120px;
+}
+
+.date-chip {
+  display: block;
+  margin: variables.$spacing-md auto;
+  padding: variables.$spacing-xs variables.$spacing-sm;
+  border-radius: variables.$border-radius-lg;
+  background-color: #eee;
+  color: #888;
+  font-size: variables.$font-size-sm;
+  font-weight: variables.$font-weight-bold;
+  text-align: center;
+  width: fit-content;
+}
+
+.floating-action-button {
+  position: fixed;
+  bottom: variables.$spacing-lg;
+  right: variables.$spacing-lg;
+  z-index: 1000;
+  color: variables.$bg-white;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: variables.$border-radius-circle;
+  padding: variables.$spacing-sm;
+  box-shadow: variables.$card-shadow;
+  cursor: pointer;
+  transition: variables.$transition-fast;
+  background-color: variables.$primary-green;
+
+  &:hover {
+    background-color: variables.$dark-green;
+  }
+}

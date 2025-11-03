@@ -1,0 +1,146 @@
+// Grid System
+// ===========
+// Bootstrap-like responsive grid system with 12 columns
+// Uses variables from _variables.scss for breakpoints and spacing
+
+@use "sass:map";
+@use "sass:math";
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.grid-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: calc(-1 * map.get($gap-map, 'sm'));
+  margin-left: calc(-1 * map.get($gap-map, 'sm'));
+}
+
+.grid-col {
+  flex: 1 0 0%;
+  padding-right: map.get($gap-map, 'sm');
+  padding-left: map.get($gap-map, 'sm');
+}
+
+// Generate column classes for all breakpoints
+//
+// @mixin generate-grid-columns
+// @param {String} $breakpoint - Breakpoint name (optional)
+//
+// @example scss
+//   @include generate-grid-columns();
+//   @include generate-grid-columns('md');
+//
+// @example css
+//   .grid-col { flex: 1 0 0%; }
+//   .grid-col-1 { width: 8.33333%; }
+//   .grid-col-2 { width: 16.66667%; }
+//   // ... and so on for 1-12
+//   @media (min-width: 768px) {
+//     .grid-col-md { flex: 1 0 0%; }
+//     .grid-col-md-1 { width: 8.33333%; }
+//     // ... and so on
+//   }
+@mixin generate-grid-columns($breakpoint: '') {
+  $prefix: '';
+  @if ($breakpoint != '') {
+    $prefix: '-#{$breakpoint}';
+  }
+
+  // Auto columns
+  .grid-col#{$prefix} {
+    flex: 1 0 0%;
+    padding-right: map.get($gap-map, 'sm');
+    padding-left: map.get($gap-map, 'sm');
+  }
+
+  // Specific column widths (1-12)
+  @for $i from 1 through 12 {
+    .grid-col#{$prefix}-#{$i} {
+      width: math.percentage(math.div($i, 12)); // 預設寬度
+    }
+
+    // 為每個 gap size 生成對應的寬度調整
+    @include gap-map-iterator() using ($gap-size, $gap-value) {
+      // 響應式 gap class
+      $elements-per-row: math.floor(math.div(12, $i));
+      $gap-amount: $elements-per-row - 1;
+
+      // 全域 gap class
+      @if ($breakpoint == '') {
+        .gx-#{$gap-size} > .grid-col-#{$i},
+        .g-#{$gap-size} > .grid-col-#{$i} {
+          width: calc((100% - #{$gap-amount} * #{$gap-value}) / 12 * #{$i});
+        }
+      }
+      @if ($breakpoint != '') {
+        .gx-#{$gap-size} > .grid-col#{$prefix}-#{$i},
+        .g-#{$gap-size} > .grid-col#{$prefix}-#{$i} {
+          width: calc((100% - #{$gap-amount} * #{$gap-value}) / 12 * #{$i});
+        }
+
+        .gx-#{$breakpoint}-#{$gap-size} > .grid-col#{$prefix}-#{$i},
+        .g-#{$breakpoint}-#{$gap-size} > .grid-col#{$prefix}-#{$i} {
+          width: calc((100% - #{$gap-amount} * #{$gap-value}) / 12 * #{$i});
+        }
+      }
+    }
+  }
+}
+
+// Generate gap classes
+//
+// @mixin generate-grid-gaps
+// @param {String} $breakpoint - Breakpoint name (optional)
+//
+// @example scss
+//   @include generate-grid-gaps();
+//   @include generate-grid-gaps('md');
+//
+// @example css
+//   .grid-gap-none { gap: 0 !important; }
+//   .grid-gap-xs { gap: 4px !important; }
+//   .grid-gap-sm { gap: 8px !important; }
+//   .grid-gap-md { gap: 16px !important; }
+//   .grid-gap-x-sm { column-gap: 8px !important; }
+//   .grid-gap-y-md { row-gap: 16px !important; }
+@mixin generate-grid-gaps($breakpoint: '') {
+  $prefix: '';
+  @if ($breakpoint != '') {
+    $prefix: '-#{$breakpoint}';
+  }
+  
+  @include gap-map-iterator() using ($size, $value) {
+    .grid-gap#{$prefix}-#{$size} {
+      gap: $value !important;
+    }
+    
+    .grid-gap-x#{$prefix}-#{$size} {
+      column-gap: $value !important;
+    }
+    
+    .grid-gap-y#{$prefix}-#{$size} {
+      row-gap: $value !important;
+    }
+  }
+}
+
+// Generate all classes for default (xs) breakpoint
+@include generate-grid-columns();
+@include generate-grid-gaps();
+
+// Generate responsive classes for each breakpoint using mixin
+@include responsive-breakpoints() using ($breakpoint, $value) {
+  @include generate-grid-columns($breakpoint);
+  @include generate-grid-gaps($breakpoint);
+}
+
+.grid-no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+  
+  & > .grid-col,
+  & > [class*="grid-col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}

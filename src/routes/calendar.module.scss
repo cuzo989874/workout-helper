@@ -1,0 +1,38 @@
+@use "../styles/abstracts/variables";
+
+.calendar-main {
+  min-height: calc(100vh - variables.$header-height); // Subtract header height
+  padding: variables.$spacing-md;
+  background-color: variables.$bg-light;
+}
+
+.calendar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: variables.$bg-white;
+  border-radius: variables.$border-radius-lg;
+  box-shadow: variables.$card-shadow;
+  overflow: hidden;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .calendar-main {
+    padding: variables.$spacing-sm;
+  }
+
+  .calendar-container {
+    border-radius: variables.$border-radius-md;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-main {
+    padding: variables.$spacing-xs;
+  }
+
+  .calendar-container {
+    border-radius: 0;
+    box-shadow: none;
+  }
+}

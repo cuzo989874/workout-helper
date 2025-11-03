@@ -1,0 +1,186 @@
+@use "../abstracts/variables";
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: variables.$border-radius-button;
+  cursor: pointer;
+  transition: all 0.2s;
+  gap: variables.$spacing-sm;
+  color: variables.$primary-green;
+  padding: variables.$spacing-sm variables.$spacing-md;
+
+  &:hover {
+    background-color: variables.$bg-grey;
+  }
+
+  &--sm {
+    font-size: variables.$font-size-sm;
+    padding: variables.$spacing-xs variables.$spacing-sm;
+  }
+
+  &--primary {
+    color: variables.$primary-green;
+
+    &:hover {
+      color: variables.$bg-white;
+      background-color: variables.$primary-green;
+    }
+  }
+
+  &--info {
+    color: variables.$blue;
+
+    &:hover {
+      background-color: variables.$dark-blue;
+      color: variables.$bg-white;
+    }
+  }
+
+  &--cancel {
+    color: variables.$red;
+
+    &:hover {
+      color: variables.$bg-white;
+      background-color: variables.$light-red;
+    }
+  }
+
+  &-flat {
+    &--primary {
+      background-color: variables.$primary-green;
+      color: variables.$bg-white;
+  
+      &:hover {
+        background-color: variables.$dark-green;
+      }
+    }
+
+    &--info {
+      background-color: variables.$blue;
+      color: variables.$bg-white;
+
+      &:hover {
+        background-color: variables.$dark-blue;
+      }
+    }
+  
+    &--error, &--cancel {
+      background-color: variables.$red;
+      color: variables.$bg-white;
+  
+      &:hover {
+        background-color: variables.$dark-red;
+      }
+    }
+  }
+
+  &-outline {
+    border: 1px solid variables.$border-color;
+    color: variables.$text-dark;
+
+    &:hover {
+      background-color: variables.$bg-light;
+    }
+
+    &--primary {
+      border-color: variables.$primary-green;
+      color: variables.$primary-green;
+
+      &:hover {
+        background-color: variables.$primary-green;
+        color: variables.$bg-white;
+      }
+    }
+
+    &--info {
+      border-color: variables.$blue;
+      color: variables.$blue;
+
+      &:hover {
+        background-color: variables.$blue;
+        color: variables.$bg-white;
+      }
+    }
+
+    &--error, &--cancel {
+      border-color: variables.$red;
+      color: variables.$red;
+
+      &:hover {
+        background-color: variables.$red;
+        color: variables.$bg-white;
+      }
+    }
+  }
+
+  &__icon {
+    font-size: .8em;
+  }
+}
+
+.icon-btn {
+  position: relative;
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border-radius: variables.$border-radius-circle;
+  padding: variables.$spacing-xs;
+  transition: all variables.$transition-fast;
+  transform: scale(1);
+
+  &:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    // final size 40px;
+    top: -6px;
+    left: -6px;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(variables.$bg-white, 0.1);
+    border-radius: variables.$border-radius-circle;
+    transition: opacity, transform variables.$transition-fast ease-in-out;
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  &:hover {
+    &:after {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  &--primary {
+    color: variables.$primary-green;
+
+    &:after {
+      background: rgba(variables.$primary-green, 0.2);
+    }
+  }
+
+  &--grey {
+    color: variables.$text-grey;
+
+    &:after {
+      background: rgba(variables.$text-grey, 0.2);
+    }
+  }
+
+  &--error {
+    color: variables.$red;
+
+    &:after {
+      background: rgba(variables.$red, 0.2);
+    }
+  }
+
+  svg {
+    vertical-align: middle;
+  }
+}
