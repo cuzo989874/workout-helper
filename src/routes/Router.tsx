@@ -1,12 +1,12 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import Home from './home';
-import Calendar from './calendar';
-import CreateWorkout from './createWorkout';
-import UpdateWorkout from './updateWorkout';
-import WorkoutDetail from './workoutDetail';
-import Timer from './timer';
+import Home from './Home';
+import Calendar from './Calendar';
+import CreateWorkout from './CreateWorkout';
+import UpdateWorkout from './UpdateWorkout';
+import WorkoutDetail from './WorkoutDetail';
+import Timer from './Timer';
 
 const Router: React.FC = () => {
   const router = createBrowserRouter([

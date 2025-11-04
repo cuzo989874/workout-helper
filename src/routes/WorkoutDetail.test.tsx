@@ -45,11 +45,11 @@ vi.mock('~/components/layouts/SubPageHeader', () => ({
 // Mock react-router hooks
 const mockNavigate = vi.fn();
 let mockParams: { id?: string } = {};
-vi.mock('react-router', async () => {
+vi.mock('react-router-dom', async () => {
   return {
     useNavigate: () => mockNavigate,
     useParams: () => mockParams,
-  } as unknown as typeof import('react-router');
+  } as unknown as typeof import('react-router-dom');
 });
 
 describe('當：WorkoutDetail 路由頁面', () => {

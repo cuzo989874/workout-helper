@@ -9,15 +9,14 @@ vi.mock('react-i18next', () => ({
   useTranslation: () => ({ t: (key: string) => key }),
 }));
 
-// Mock useNavigate and useLocation from react-router
+// Mock useNavigate from react-router-dom
 const mockNavigate = vi.fn();
 let mockPathname = '/';
-
-vi.mock('react-router', async () => {
+vi.mock('react-router-dom', async () => {
   return {
     useLocation: () => ({ pathname: mockPathname }),
     useNavigate: () => mockNavigate,
-  } as unknown as typeof import('react-router');
+  };
 });
 
 // mock CalendarIcon

@@ -16,10 +16,10 @@ vi.mock('~/assets/google-fonts/chevron_left.svg?react', () => ({
 
 // Mock useNavigate from react-router
 const mockNavigate = vi.fn();
-vi.mock('react-router', async () => {
+vi.mock('react-router-dom', async () => {
   return {
     useNavigate: () => mockNavigate,
-  } as unknown as typeof import('react-router');
+  };
 });
 
 describe('當：SubPageHeader 組件', () => {

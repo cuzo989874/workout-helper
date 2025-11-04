@@ -511,7 +511,7 @@ export default function Header() {
 
 **Implementation:**
 ```tsx
-import { useSearchParams } from 'react-router';
+import { useSearchParams } from 'react-router-dom';
 
 export default function CreateWorkout() {
   const [searchParams] = useSearchParams();

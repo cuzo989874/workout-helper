@@ -1,8 +1,9 @@
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import ChevronLeftIcon from '~/assets/google-fonts/chevron_left.svg?react';
+
 import styles from './Header.module.scss';
-import { useTranslation } from 'react-i18next';
 
 export default function SubPageHeader() {
   const navigate = useNavigate();
