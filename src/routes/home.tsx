@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 
 import lodash from 'lodash';
 
@@ -11,7 +11,7 @@ import WorkoutCard from '~/components/feature/WorkoutCard';
 import type { IWorkout } from '~/interface/workout';
 
 import AddIcon from '~/assets/google-fonts/add.svg?react';
-import styles from './home.module.scss';
+import styles from './Home.module.scss';
 
 export function meta() {
   return [

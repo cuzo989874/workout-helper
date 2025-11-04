@@ -27,12 +27,12 @@ vi.mock('~/assets/google-fonts/add.svg?react', () => ({
   default: () => <svg data-testid="add-icon" />,
 }));
 
-// Mock useNavigate from react-router
+// Mock react-router-dom
 const mockNavigate = vi.fn();
-vi.mock('react-router', async () => {
+vi.mock('react-router-dom', async () => {
   return {
     useNavigate: () => mockNavigate,
-  } as unknown as typeof import('react-router');
+  };
 });
 
 // Mock WorkoutCard to keep test lightweight

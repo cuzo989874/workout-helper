@@ -2,7 +2,7 @@ import { render, screen, cleanup, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi, afterEach, beforeEach } from 'vitest';
 
-import UpdateWorkout from './updateWorkout';
+import UpdateWorkout from './UpdateWorkout';
 
 import type { IExercise, IWorkout } from '~/interface/workout';
 
@@ -23,7 +23,7 @@ vi.mock('~/assets/google-fonts/calendar_month.svg?react', () => ({
 // Mock react-router
 const mockNavigate = vi.fn();
 const mockUseParams = vi.fn();
-vi.mock('react-router', async () => {
+vi.mock('react-router-dom', async () => {
   return {
     useNavigate: () => mockNavigate,
     useParams: () => mockUseParams(),

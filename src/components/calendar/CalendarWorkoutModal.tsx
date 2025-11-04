@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import type { IWorkout } from '~/interface/workout';
 import WorkoutCard from '~/components/feature/WorkoutCard';
 import CloseIcon from '~/assets/google-fonts/close.svg?react';

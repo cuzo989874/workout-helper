@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { LocalStorageService } from '~/services/LocalStorageService';
 import {
   computeCalendarDays,
@@ -10,7 +10,8 @@ import Header from '~/components/layouts/Header';
 import CalendarHeader from '~/components/calendar/CalendarHeader';
 import CalendarGrid from '~/components/calendar/CalendarGrid';
 import CalendarWorkoutModal from '~/components/calendar/CalendarWorkoutModal';
-import styles from './calendar.module.scss';
+
+import styles from './Calendar.module.scss';
 
 export function meta() {
   return [

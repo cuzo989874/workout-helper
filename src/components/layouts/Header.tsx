@@ -1,4 +1,4 @@
-import { useNavigate, useLocation } from 'react-router';
+import { useNavigate, useLocation } from 'react-router-dom';
 import CalendarIcon from '~/assets/google-fonts/calendar_month.svg?react';
 import styles from './Header.module.scss';
 

@@ -2,7 +2,7 @@ import { render, screen, cleanup } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi, afterEach, beforeEach } from 'vitest';
 
-import CreateWorkout from './createWorkout';
+import CreateWorkout from './CreateWorkout';
 
 import type { IExercise } from '~/interface/workout';
 
@@ -24,11 +24,11 @@ vi.mock('~/assets/google-fonts/calendar_month.svg?react', () => ({
 const mockNavigate = vi.fn();
 // Mock useSearchParams from react-router
 const mockSearchParams = [new URLSearchParams(), vi.fn()];
-vi.mock('react-router', async () => {
+vi.mock('react-router-dom', async () => {
   return {
     useNavigate: () => mockNavigate,
     useSearchParams: () => mockSearchParams,
-  } as unknown as typeof import('react-router');
+  };
 });
 
 // Mock LocalStorageService.addWorkout

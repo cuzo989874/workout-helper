@@ -2,7 +2,7 @@ import { render, screen, cleanup } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi, afterEach } from 'vitest';
 
-import Home from './home';
+import Home from './Home';
 
 import type { IWorkout } from '~/interface/workout';
 
@@ -27,11 +27,11 @@ vi.mock('~/components/feature/WorkoutCard', () => ({
 // Mock useNavigate, useLocation from react-router
 const mockNavigate = vi.fn();
 const mockLocation = vi.fn();
-vi.mock('react-router', async () => {
+vi.mock('react-router-dom', async () => {
   return {
     useNavigate: () => mockNavigate,
     useLocation: () => mockLocation,
-  } as unknown as typeof import('react-router');
+  };
 });
 
 // Mock LocalStorageService
