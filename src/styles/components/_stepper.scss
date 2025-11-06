@@ -1,0 +1,54 @@
+@use '../abstracts/variables' as *;
+
+.stepper {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.stepper__step--completed {
+  border-color: $border-light-green;
+}
+
+.stepper__label {
+  font-weight: $font-weight-bold;
+  color: $text-dark;
+  margin-bottom: $spacing-sm;
+}
+
+.stepper__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: $spacing-sm;
+  margin-top: $spacing-sm;
+
+  &--fixed {
+    position: fixed;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    bottom: 0;
+    border-top: 1px solid #ddd;
+    box-shadow: 0 -4px 8px #0001;
+  }
+}
+
+.stepper__button {
+  appearance: none;
+  border: 1px solid $border-color;
+  background: $bg-white;
+  color: $text-dark;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $border-radius;
+  cursor: pointer;
+  transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease;
+
+  &:hover {
+    background: $bg-grey-hover;
+  }
+}
+
+

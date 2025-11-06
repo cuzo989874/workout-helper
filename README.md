@@ -1,96 +1,16 @@
-# Workout Helper
+# React + Vite
 
-Welcome to Workout Helper! A modern, production-ready web application designed to help you create, track, and manage your workout routines.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Features
+Currently, two official plugins are available:
 
-- **Workout Management**: Create, update, and delete workout sessions.
-- **Exercise Tracking**: Add detailed exercises to your workouts, including sets, reps, weight, and rest times.
-- **Data Persistence**: Your workout data is saved locally in your browser using Local Storage.
-- **Modern Tech Stack**: Built with React, React Router, Vite, and TypeScript for a fast and reliable experience.
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR) for a smooth development experience.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Getting Started
+## React Compiler
 
-### Prerequisites
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-- [Node.js](https://nodejs.org/) (v18 or higher recommended)
-- [npm](https://www.npmjs.com/)
+## Expanding the ESLint configuration
 
-### Installation
-
-Install the dependencies:
-
-```bash
-npm install
-```
-
-### Development
-
-Start the development server with Hot Module Replacement (HMR):
-
-```bash
-npm run dev
-```
-
-Your application will be available at `http://localhost:5173`.
-
-## Available Scripts
-
-This project includes a set of useful scripts to help with development and maintenance:
-
-- `npm run dev`: Starts the development server.
-- `npm run build`: Creates a production-ready build of the application.
-- `npm run start`: Starts the production server to serve the built application.
-- `npm run test`: Runs the test suite using Vitest.
-- `npm run test:watch`: Runs the tests in interactive watch mode.
-- `npm run test:coverage`: Generates a test coverage report.
-- `npm run lint`: Lints the codebase using ESLint to find and report potential errors.
-- `npm run lint:fix`: Automatically fixes linting issues.
-- `npm run format`: Formats all files using Prettier.
-- `npm run typecheck`: Runs the TypeScript compiler to check for type errors.
-
-## Styling
-
-This project uses [Sass](https://sass-lang.com/) for styling, following a modular structure located in the `/styles` directory. This allows for organized and maintainable CSS.
-
-## Building for Production
-
-Create a production build:
-
-```bash
-npm run build
-```
-
-## Deployment
-
-### Docker Deployment
-
-To build and run using Docker:
-
-```bash
-# Build the Docker image
-docker build -t workout-helper .
-
-# Run the container
-docker run -p 3000:3000 workout-helper
-```
-
-The containerized application can be deployed to any platform that supports Docker.
-
-### DIY Deployment
-
-The built-in app server is production-ready. After running `npm run build`, deploy the following files/directories to your server:
-
-```
-├── package.json
-├── package-lock.json
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
----
-
-Built with ❤️ using React Router.
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.

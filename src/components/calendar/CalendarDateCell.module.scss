@@ -1,0 +1,90 @@
+@use "sass:color";
+@use "../../styles/abstracts/variables";
+
+.calendar-date-cell {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 80px;
+  padding: variables.$spacing-sm;
+  border: 1px solid variables.$border-color;
+  background-color: variables.$bg-white;
+  cursor: pointer;
+  transition: variables.$transition-fast;
+
+  &:hover {
+    background-color: rgba(variables.$primary-green, 20%);
+    border-color: rgba(variables.$primary-green, 50%);
+  }
+}
+
+.date-number {
+  width: 1.7em;
+  height: 1.7em;
+  line-height: 1.7em;
+  font-size: variables.$font-size-base;
+  font-weight: variables.$font-weight-normal;
+  color: variables.$text-dark;
+}
+
+// Other month dates (prev/next month)
+.other-month {
+  background-color: #eee;
+  
+  .date-number {
+    color: #aaa;
+  }
+}
+
+// Today's date
+.today > .date-number {
+  border-radius: variables.$border-radius-circle;
+  background-color: variables.$primary-green;
+  font-weight: 600;
+  color: variables.$text-white;
+}
+
+// Dates with workouts
+.has-workouts {
+  .date-number {
+    font-weight: variables.$font-weight-bold;
+  }
+}
+
+// Workout indicator (dot or badge)
+.workout-indicator {
+  position: absolute;
+  bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 6px;
+  min-height: 6px;
+  border-radius: variables.$border-radius-circle;
+  background-color: variables.$primary-green;
+}
+
+.workout-count {
+  font-size: 10px;
+  font-weight: variables.$font-weight-bold;
+  color: variables.$bg-white;
+  padding: 2px 4px;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .calendar-date-cell {
+    min-height: calc((100dvh - 48px - 54px - 32px) / 6);
+    padding: 2px; // Smaller than xs (4px)
+  }
+
+  .date-number {
+    font-size: variables.$font-size-sm;
+  }
+
+  .workout-count {
+    font-size: 8px;
+  }
+}

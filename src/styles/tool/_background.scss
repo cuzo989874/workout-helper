@@ -1,0 +1,17 @@
+@use "../abstracts/variables";
+
+.bg-white {
+  background-color: variables.$bg-white;
+}
+
+.bg-light {
+  background-color: variables.$bg-light;
+}
+
+.bg-grey {
+  background-color: variables.$bg-grey;
+}
+
+.bg-primary {
+  background-color: variables.$bg-primary;
+}
