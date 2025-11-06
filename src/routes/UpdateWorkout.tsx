@@ -9,7 +9,7 @@ import {
   formatTimestampWithLanguage,
 } from '~/utils/dateUtils';
 
-import SubPageHeader from '~/components/layouts/SubPageHeader';
+import SubPageLayout from '~/components/layouts/SubPageLayout';
 import FormInput from '~/components/form/FormInput';
 import FormDatePicker, {
   type IFormDatePickerRef,
@@ -134,130 +134,121 @@ export default function UpdateWorkout() {
   }
 
   return (
-    <div>
-      <SubPageHeader />
-      <main className="p-md">
-        <Stepper>
-          <Step>
-            <StepLabel>
-              {t('workout.basicInfo', { defaultValue: 'Basic Info' })}
-            </StepLabel>
-            <p className="text--grey mb-md">
-              {t('workout.fillInWorkoutDateAndDescription', {
-                defaultValue: 'Fill in workout date and description below.',
-              })}
-            </p>
-            <form onSubmit={e => e.preventDefault()}>
-              <main className="stepper__main">
-                <FormDatePicker
-                  ref={
-                    workoutDateInputRef as React.RefObject<IFormDatePickerRef>
-                  }
-                  name="date"
-                  label={t('workout.date')}
-                  value={date}
-                  required
-                  onChange={value => setDate(value)}
-                />
-                <FormInput
-                  name="description"
-                  label={t('workout.description')}
-                  placeholder={t('workout.descriptionPlaceholder', {
-                    defaultValue: 'Workout description',
-                  })}
-                  value={description}
-                  onChange={e => {
-                    setDescription(e.target.value);
-                  }}
-                />
-              </main>
-              <StepActions
-                className="stepper__actions--fixed flex-column g-md"
-                onBeforeNext={validateWorkoutInfo}
+    <SubPageLayout>
+      <Stepper>
+        <Step>
+          <StepLabel>
+            {t('workout.basicInfo', { defaultValue: 'Basic Info' })}
+          </StepLabel>
+          <p className="text--grey mb-md">
+            {t('workout.fillInWorkoutDateAndDescription', {
+              defaultValue: 'Fill in workout date and description below.',
+            })}
+          </p>
+          <form onSubmit={e => e.preventDefault()}>
+            <main className="stepper__main">
+              <FormDatePicker
+                ref={workoutDateInputRef as React.RefObject<IFormDatePickerRef>}
+                name="date"
+                label={t('workout.date')}
+                value={date}
+                required
+                onChange={value => setDate(value)}
+              />
+              <FormInput
+                name="description"
+                label={t('workout.description')}
+                placeholder={t('workout.descriptionPlaceholder', {
+                  defaultValue: 'Workout description',
+                })}
+                value={description}
+                onChange={e => {
+                  setDescription(e.target.value);
+                }}
+              />
+            </main>
+            <StepActions
+              className="stepper__actions--fixed flex-column g-md"
+              onBeforeNext={validateWorkoutInfo}
+            >
+              <button
+                type="submit"
+                className="btn btn-flat--primary w-100 stepper__button--next"
               >
-                <button
-                  type="submit"
-                  className="btn btn-flat--primary w-100 stepper__button--next"
-                >
-                  {t('workout.continueToEditExercises', {
-                    defaultValue: 'Continue to Edit Workout',
-                  })}
-                </button>
-              </StepActions>
-            </form>
-          </Step>
-          <Step>
-            <StepLabel>
-              {t('workout.exercises', { defaultValue: 'Exercises' })}
-            </StepLabel>
-            <p className="text--grey mb-md">
-              {t('workout.addOrEditExercises', {
-                defaultValue: 'Add or edit exercises for this workout.',
-              })}
-            </p>
-            <form onSubmit={submit}>
-              <ul className="flex flex-column g-md mb-lg">
-                {exerciseList.map((exercise, index) => (
-                  <li
-                    key={`${index}-${exercise.exerciseName}-${exercise.notes}`}
-                  >
-                    <Card>
-                      <ExerciseCard
-                        exercise={exercise}
-                        onEdit={() => editExerciseByIndex(index)}
-                        onDelete={() => deleteExerciseByIndex(index)}
-                      />
-                    </Card>
-                  </li>
-                ))}
-              </ul>
+                {t('workout.continueToEditExercises', {
+                  defaultValue: 'Continue to Edit Workout',
+                })}
+              </button>
+            </StepActions>
+          </form>
+        </Step>
+        <Step>
+          <StepLabel>
+            {t('workout.exercises', { defaultValue: 'Exercises' })}
+          </StepLabel>
+          <p className="text--grey mb-md">
+            {t('workout.addOrEditExercises', {
+              defaultValue: 'Add or edit exercises for this workout.',
+            })}
+          </p>
+          <form onSubmit={submit}>
+            <ul className="flex flex-column g-md mb-lg">
+              {exerciseList.map((exercise, index) => (
+                <li key={`${index}-${exercise.exerciseName}-${exercise.notes}`}>
+                  <Card>
+                    <ExerciseCard
+                      exercise={exercise}
+                      onEdit={() => editExerciseByIndex(index)}
+                      onDelete={() => deleteExerciseByIndex(index)}
+                    />
+                  </Card>
+                </li>
+              ))}
+            </ul>
+            <button
+              type="button"
+              className="btn btn-outline btn-outline--info w-100"
+              onClick={() => addExercise()}
+            >
+              <AddIcon
+                width={18}
+                height={18}
+                fill="currentColor"
+                aria-hidden="true"
+              />
+              {t('workout.addExercise', { defaultValue: 'Add Exercise' })}
+            </button>
+
+            <StepActions className="stepper__actions--fixed align-center justify-between gx-md mt-md">
               <button
                 type="button"
-                className="btn btn-outline btn-outline--info w-100"
-                onClick={() => addExercise()}
+                className="btn btn-primary stepper__button--back"
               >
-                <AddIcon
+                <ChevronLeftIcon
                   width={18}
                   height={18}
                   fill="currentColor"
                   aria-hidden="true"
                 />
-                {t('workout.addExercise', { defaultValue: 'Add Exercise' })}
+                {t('common.prev', { defaultValue: 'Prev' })}
               </button>
-
-              <StepActions className="stepper__actions--fixed align-center justify-between gx-md mt-md">
-                <button
-                  type="button"
-                  className="btn btn-primary stepper__button--back"
-                >
-                  <ChevronLeftIcon
-                    width={18}
-                    height={18}
-                    fill="currentColor"
-                    aria-hidden="true"
-                  />
-                  {t('common.prev', { defaultValue: 'Prev' })}
-                </button>
-                <button type="submit" className="btn btn-flat--primary">
-                  <SaveIcon
-                    width={18}
-                    height={18}
-                    fill="currentColor"
-                    aria-hidden="true"
-                  />
-                  {t('common.save', { defaultValue: 'Save' })}
-                </button>
-              </StepActions>
-            </form>
-            <ExerciseFormModal
-              ref={
-                exerciseFormModalRef as React.RefObject<IExerciseFormModalRef>
-              }
-              onSubmit={handleExerciseSubmit}
-            />
-          </Step>
-        </Stepper>
-      </main>
-    </div>
+              <button type="submit" className="btn btn-flat--primary">
+                <SaveIcon
+                  width={18}
+                  height={18}
+                  fill="currentColor"
+                  aria-hidden="true"
+                />
+                {t('common.save', { defaultValue: 'Save' })}
+              </button>
+            </StepActions>
+          </form>
+          <ExerciseFormModal
+            ref={exerciseFormModalRef as React.RefObject<IExerciseFormModalRef>}
+            onSubmit={handleExerciseSubmit}
+          />
+        </Step>
+      </Stepper>
+    </SubPageLayout>
   );
 }
