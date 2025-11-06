@@ -41,7 +41,7 @@ export default defineConfig([
           jsx: true
         },
         tsconfigRootDir: __dirname,
-        project: './tsconfig.json'
+        project: ['./tsconfig.app.json', './tsconfig.test.json']
       }
     }
   },
