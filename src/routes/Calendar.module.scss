@@ -2,8 +2,6 @@
 
 .calendar-main {
   min-height: calc(100vh - variables.$header-height); // Subtract header height
-  padding: variables.$spacing-md;
-  background-color: variables.$bg-light;
 }
 
 .calendar-container {

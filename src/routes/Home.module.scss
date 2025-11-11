@@ -20,7 +20,7 @@
 .floating-action-button {
   position: fixed;
   bottom: variables.$spacing-lg;
-  right: variables.$spacing-lg;
+  right: max(variables.$spacing-lg, calc((100% - variables.$breakpoint-lg) / 2));
   z-index: 1000;
   color: variables.$bg-white;
   width: 60px;

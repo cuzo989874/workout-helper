@@ -6,9 +6,9 @@ export default function SubPageLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div>
+    <>
       <SubPageHeader />
-      <main className="p-md">{children}</main>
-    </div>
+      <main className="main pt-md px-lg">{children}</main>
+    </>
   );
 }

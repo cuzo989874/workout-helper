@@ -97,7 +97,7 @@ export default function Calendar() {
   return (
     <>
       <Header />
-      <main className={styles['calendar-main']}>
+      <main className={`main ${styles['calendar-main']} pt-lg`}>
         <div className={styles['calendar-container']}>
           <CalendarHeader
             currentMonth={currentMonth}

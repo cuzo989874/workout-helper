@@ -1,24 +1,34 @@
 @use "../../styles/abstracts/variables";
 
 .header {
-  display: flex;
+  width: 100%;
   min-height: 48px;
-  justify-content: space-between;
-  align-items: center;
-  padding: variables.$spacing-sm variables.$spacing-md;
-  background-color: variables.$bg-white;
+  display: flex;
+  justify-content: center;
   border-bottom: 1px solid variables.$border-color;
 
-  & > a > h1 {
-    font-size: variables.$font-size-xl;
-    margin: 0;
+  &-content {
+    display: flex;
+    width: min(100%, variables.$breakpoint-lg);
+    justify-content: space-between;
+    align-items: center;
+    padding: variables.$spacing-sm variables.$spacing-md;
+    background-color: variables.$bg-white;
   }
-}
-
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: variables.$spacing-sm;
+  &-logo {
+    cursor: pointer;
+    
+    & > h1 {
+      font-size: variables.$font-size-xl;
+      margin: 0;
+      color: variables.$text-dark;
+    }
+  }
+  &-actions {
+    display: flex;
+    align-items: center;
+    gap: variables.$spacing-sm;
+  }
 }
 
 .view-toggle-btn {
@@ -52,12 +62,8 @@
 }
 
 // Responsive adjustments
-@media (max-width: 768px) {
-  .header {
-    padding: variables.$spacing-xs variables.$spacing-sm;
-  }
-
-  .header > a > h1 {
+@media (max-width: variables.$breakpoint-md) {
+  .header-logo > h1 {
     font-size: variables.$font-size-lg;
   }
 
@@ -67,8 +73,8 @@
   }
 }
 
-@media (max-width: 480px) {
-  .header > a > h1 {
+@media (max-width: variables.$breakpoint-sm) {
+  .header-logo > h1 {
     font-size: variables.$font-size-base;
   }
 }

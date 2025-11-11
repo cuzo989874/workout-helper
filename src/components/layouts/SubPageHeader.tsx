@@ -17,10 +17,12 @@ export default function SubPageHeader() {
   };
   return (
     <header className={styles.header}>
-      <button className="btn btn--primary pl-sm" onClick={goBack}>
-        <ChevronLeftIcon className="icon icon--sm" />
-        <span>{t('common.back')}</span>
-      </button>
+      <div className={styles['header-content']}>
+        <button className="btn btn--primary pl-sm" onClick={goBack}>
+          <ChevronLeftIcon className="icon icon--sm" />
+          <span>{t('common.back')}</span>
+        </button>
+      </div>
     </header>
   );
 }
