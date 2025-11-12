@@ -85,7 +85,7 @@ describe('當：WorkoutDetail 路由頁面', () => {
     render(<WorkoutDetail />);
 
     expect(screen.getByTestId('subpage-header')).toBeInTheDocument();
-    expect(screen.getByText('Workout not found.')).toBeInTheDocument();
+    expect(screen.getByText('workout.notFound')).toBeInTheDocument();
   });
 
   it('應該：渲染基本資訊與運動清單', () => {

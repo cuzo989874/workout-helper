@@ -39,9 +39,9 @@ export default function Home() {
   }, []);
 
   return (
-    <>
+    <div>
       <Header />
-      <main className={styles['home-main']}>
+      <main className={`main ${styles['home-main']}`}>
         <ul>
           {groupedWorkoutByDate.map(({ workout, date }) => (
             <li key={date}>
@@ -66,6 +66,6 @@ export default function Home() {
           <AddIcon width={32} height={32} fill="currentColor" />
         </div>
       </main>
-    </>
+    </div>
   );
 }

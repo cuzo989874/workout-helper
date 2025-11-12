@@ -2,7 +2,7 @@ import { useMemo, useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import SubPageHeader from '~/components/layouts/SubPageHeader';
+import SubPageLayout from '~/components/layouts/SubPageLayout';
 import { Card } from '~/components/card/Card';
 import ExerciseCard from '~/components/feature/ExerciseCard';
 
@@ -43,19 +43,17 @@ export default function WorkoutDetail() {
 
   if (!workout) {
     return (
-      <>
-        <SubPageHeader />
-        <main className="p-md">
-          <p className="text--grey">Workout not found.</p>
-        </main>
-      </>
+      <SubPageLayout>
+        <p className="text--grey">
+          {t('workout.notFound', { defaultValue: 'Workout not found.' })}
+        </p>
+      </SubPageLayout>
     );
   }
 
   return (
-    <div>
-      <SubPageHeader />
-      <main className="p-md">
+    <SubPageLayout>
+      <>
         <div className="flex justify-end g-md">
           <button
             className="btn btn--cancel"
@@ -110,7 +108,7 @@ export default function WorkoutDetail() {
             <p className="text--grey px-md">{t('workout.noExercises')}</p>
           )}
         </section>
-      </main>
-    </div>
+      </>
+    </SubPageLayout>
   );
 }

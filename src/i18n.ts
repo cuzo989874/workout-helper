@@ -31,6 +31,7 @@ const resources = {
         sat: 'Sat',
       },
       workout: {
+        notFound: 'Workout not found.',
         basicInfo: 'Basic Info',
         fillInWorkoutDateAndDescription:
           'Fill in workout date and description below.',
@@ -145,6 +146,7 @@ const resources = {
         sat: '六',
       },
       workout: {
+        notFound: '找不到訓練。',
         basicInfo: '基本資訊',
         fillInWorkoutDateAndDescription: '請填寫訓練日期和描述。',
         continueToAddExercises: '繼續新增運動',
