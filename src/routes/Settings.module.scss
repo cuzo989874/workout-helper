@@ -1,0 +1,116 @@
+@use "../styles/abstracts/variables" as *;
+
+.settings {
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    margin-bottom: $spacing-lg;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__label {
+    display: block;
+    font-size: $font-size-sm;
+    color: $text-grey;
+    margin-bottom: $spacing-xs;
+    font-weight: 500;
+  }
+
+  &__version {
+    font-size: $font-size-base;
+    color: $text-dark;
+    padding: $spacing-md 0;
+  }
+
+  // Material Design 风格的 select 容器
+  &__select-wrapper {
+    position: relative;
+    margin-top: $spacing-xs;
+    
+    // Material Design 的下划线效果
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: $primary-green;
+      transform: scaleX(0);
+      transition: transform $transition-normal $ease-in-out;
+      transform-origin: bottom center;
+      z-index: 1;
+    }
+
+    // Focus 时显示下划线动画
+    &:focus-within::after {
+      transform: scaleX(1);
+    }
+  }
+
+  // Material Design 风格的 select
+  &__select {
+    width: 100%;
+    padding: $spacing-md $spacing-xl $spacing-md $spacing-sm;
+    border: none;
+    border-bottom: 1px solid rgba($text-dark, 0.42);
+    border-radius: 0;
+    font-size: $font-size-base;
+    color: $text-dark;
+    background-color: transparent;
+    cursor: pointer;
+    transition: border-color $transition-fast $ease-in-out, 
+                background-color $transition-fast $ease-in-out;
+    appearance: none;
+    min-height: 48px; // Material Design 最小触摸目标
+    position: relative;
+    
+    // Material Design 下拉箭头 - 使用 Material Icons 风格
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280' stroke-width='2'%3e%3cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/%3e%3c/svg%3e");
+    background-position: right $spacing-md center;
+    background-repeat: no-repeat;
+    background-size: 24px;
+    padding-right: 48px;
+
+    // Hover 状态 - Material Design ripple effect 的替代
+    &:hover {
+      background-color: rgba($text-dark, 0.04);
+      border-bottom-color: rgba($text-dark, 0.87);
+    }
+
+    // Focus 状态 - Material Design 强调色（下划线由 wrapper 的 ::after 处理）
+    &:focus {
+      outline: none;
+      border-bottom-color: $primary-green;
+      background-color: rgba($primary-green, 0.04);
+    }
+
+    // Active 状态
+    &:active {
+      background-color: rgba($primary-green, 0.08);
+    }
+
+    // Material Design 的选项样式
+    option {
+      padding: $spacing-md;
+      background-color: $bg-white;
+      color: $text-dark;
+      min-height: 48px;
+    }
+  }
+
+  // Material Design 的 ripple effect 容器
+  &__ripple-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: $border-radius-sm;
+  }
+}
+
