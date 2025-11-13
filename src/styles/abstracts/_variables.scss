@@ -19,7 +19,7 @@ $gap-map: (
 // 顏色系統 (Color System)
 // =============================================================================
 
-// 主要品牌色彩 (Primary Brand Colors)
+// 主要品牌色彩 (Primary Brand Colors) - 在 light 和 dark mode 中保持一致
 $primary-green: #007852;
 $light-green: #00a07a;
 $dark-green: #005a3e;
@@ -37,41 +37,104 @@ $red: #DB4437;
 $light-red: #f38686;
 $dark-red: #B72D29;
 
-// 背景色彩 (Background Colors)
-$bg-white: #ffffff;
-$bg-light: #f7f7f8;
-$bg-grey: #f0f0f0;
-$bg-light-grey: #f9f9f9;
-$bg-grey-hover: #f5f5f5;
-$bg-primary: #f5f9f7;
-$bg-sub-green: #d5e1dd;
-$bg-light-green: #f5f9f7;
-$bg-dropdown: #ffffff;
-$bg-selected: #ebfff5;
+// =============================================================================
+// 主題顏色變數 (Theme Color Variables)
+// 使用 CSS 變數以支持動態主題切換
+// =============================================================================
 
-// 文字色彩 (Text Colors)
-$text-dark: #343541;
-$text-sub-dark: #666;
-$text-white: #ffffff;
-$text-grey: #6e6e80;
-$text-light-grey: #acacbe;
+:root {
+  // Light Mode Colors (預設)
+  --bg-white: #ffffff;
+  --bg-light: #f7f7f8;
+  --bg-grey: #f0f0f0;
+  --bg-light-grey: #f9f9f9;
+  --bg-grey-hover: #f5f5f5;
+  --bg-primary: #f5f9f7;
+  --bg-sub-green: #d5e1dd;
+  --bg-light-green: #f5f9f7;
+  --bg-dropdown: #ffffff;
+  --bg-selected: #ebfff5;
+  
+  --text-dark: #343541;
+  --text-sub-dark: #666;
+  --text-white: #ffffff;
+  --text-grey: #6e6e80;
+  --text-light-grey: #acacbe;
+  
+  --border-color: #e5e5e5;
+  --border-light-green: #e6f3ed;
+  
+  --button-hover: #ebfff5;
+}
 
-// 邊框色彩 (Border Colors)
-$border-color: #e5e5e5;
-$border-light-green: #e6f3ed;
+[data-theme='dark'] {
+  // Dark Mode Colors
+  --bg-white: #1e1e1e;
+  --bg-light: #2a2a2a;
+  --bg-grey: #333333;
+  --bg-light-grey: #2d2d2d;
+  --bg-grey-hover: #3a3a3a;
+  --bg-primary: #2d4035;
+  --bg-sub-green: #2a3a32;
+  --bg-light-green: #2d4035;
+  --bg-dropdown: #2a2a2a;
+  --bg-selected: #1a3d2e;
+  
+  --text-dark: #e0e0e0;
+  --text-sub-dark: #b0b0b0;
+  --text-white: #ffffff;
+  --text-grey: #a0a0a0;
+  --text-light-grey: #808080;
+  
+  --border-color: #404040;
+  --border-light-green: #2a4a3a;
+  
+  --button-hover: #1a3d2e;
+}
 
-// 互動色彩 (Interactive Colors)
-$button-hover: #ebfff5;
+// SCSS 變數映射到 CSS 變數 (用於向後兼容)
+$bg-white: var(--bg-white);
+$bg-light: var(--bg-light);
+$bg-grey: var(--bg-grey);
+$bg-light-grey: var(--bg-light-grey);
+$bg-grey-hover: var(--bg-grey-hover);
+$bg-primary: var(--bg-primary);
+$bg-sub-green: var(--bg-sub-green);
+$bg-light-green: var(--bg-light-green);
+$bg-dropdown: var(--bg-dropdown);
+$bg-selected: var(--bg-selected);
+
+$text-dark: var(--text-dark);
+$text-sub-dark: var(--text-sub-dark);
+$text-white: var(--text-white);
+$text-grey: var(--text-grey);
+$text-light-grey: var(--text-light-grey);
+
+$border-color: var(--border-color);
+$border-light-green: var(--border-light-green);
+
+$button-hover: var(--button-hover);
 
 // =============================================================================
 // 陰影系統 (Shadow System)
 // =============================================================================
+// Light mode shadows
 $dropdown-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
 $popup-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 $card-shadow: 0 4px 9px rgba(0, 0, 0, 0.2);
 $input-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 $button-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 $sidebar-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+
+// Dark mode shadows (更深的陰影以增強對比)
+[data-theme='dark'] {
+  --dropdown-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+  --popup-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+  --card-shadow: 0 4px 9px rgba(0, 0, 0, 0.5);
+  --input-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  --button-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  --sidebar-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+}
 
 // =============================================================================
 // 圓角系統 (Border Radius System)
