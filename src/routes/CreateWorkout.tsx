@@ -81,7 +81,6 @@ export default function CreateWorkout() {
 
   const handleExerciseSubmit = (exercise: IExercise) => {
     if (exerciseFormEditIndexRef.current === -1) {
-      // index is -1, add exercise
       setExerciseList([...exerciseList, exercise]);
     } else {
       setExerciseList(
