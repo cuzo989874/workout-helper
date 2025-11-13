@@ -13,6 +13,10 @@
 
   &:hover {
     background-color: variables.$bg-grey;
+
+    [data-theme='dark'] & {
+      background-color: variables.$bg-grey-hover;
+    }
   }
 
   &--sm {
@@ -26,6 +30,10 @@
     &:hover {
       color: variables.$bg-white;
       background-color: variables.$primary-green;
+
+      [data-theme='dark'] & {
+        background-color: variables.$light-green;
+      }
     }
   }
 
@@ -54,6 +62,10 @@
   
       &:hover {
         background-color: variables.$dark-green;
+
+        [data-theme='dark'] & {
+          background-color: variables.$light-green;
+        }
       }
     }
 
@@ -82,6 +94,10 @@
 
     &:hover {
       background-color: variables.$bg-light;
+
+      [data-theme='dark'] & {
+        background-color: variables.$bg-grey-hover;
+      }
     }
 
     &--primary {
@@ -91,6 +107,10 @@
       &:hover {
         background-color: variables.$primary-green;
         color: variables.$bg-white;
+
+        [data-theme='dark'] & {
+          background-color: variables.$light-green;
+        }
       }
     }
 

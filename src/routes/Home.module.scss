@@ -37,5 +37,9 @@
 
   &:hover {
     background-color: variables.$dark-green;
+
+    [data-theme='dark'] & {
+      background-color: variables.$light-green;
+    }
   }
 }

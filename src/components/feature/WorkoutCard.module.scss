@@ -3,6 +3,12 @@
 .workout-card {
   max-width: min(400px, 100dvw - variables.$spacing-md * 2);
   margin: 0 auto;
+  
+  background-color: variables.$bg-white;
+
+  [data-theme='dark'] & {
+    background-color: variables.$bg-light;
+  }
 }
 
 .exercise {
