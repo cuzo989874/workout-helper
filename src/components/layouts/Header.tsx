@@ -65,7 +65,6 @@ export default function Header() {
           >
             <SettingsIcon width={24} height={24} fill="currentColor" />
           </button>
-          {/* TODO: Dark Mode Button */}
         </div>
       </div>
     </header>
