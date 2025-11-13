@@ -70,6 +70,10 @@ const resources = {
         minLength: 'Minimum length is {{min}} characters.',
         maxLength: 'Maximum length is {{max}} characters.',
       },
+      datePicker: {
+        selectDate: 'Select Date',
+        invalidDate: 'Invalid date',
+      },
       exercise: {
         form: {
           title: {
@@ -196,6 +200,10 @@ const resources = {
         required: '{{label}} 是必填的。',
         minLength: '至少需要輸入 {{min}} 個字元。',
         maxLength: '最多只能輸入 {{max}} 個字元。',
+      },
+      datePicker: {
+        selectDate: '選擇日期',
+        invalidDate: '無效的日期',
       },
       exercise: {
         form: {
