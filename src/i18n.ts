@@ -17,6 +17,7 @@ const resources = {
         save: 'Save',
         add: 'Add',
         prev: 'Prev',
+        close: 'Close',
       },
       settings: {
         language: 'Language',
@@ -30,6 +31,13 @@ const resources = {
         thu: 'Thu',
         fri: 'Fri',
         sat: 'Sat',
+        noWorkoutsOnDate: 'No workouts on this date.',
+        title: 'Calendar - Workout Helper',
+        description: 'View your workouts in calendar format',
+        today: 'Today',
+        goToToday: 'Go to today',
+        previousMonth: 'Previous month',
+        nextMonth: 'Next month',
       },
       workout: {
         notFound: 'Workout not found.',
@@ -55,6 +63,7 @@ const resources = {
         noExercises: 'There are no exercises in this workout.',
         startWorkout: 'Start Workout',
         timer: 'Timer',
+        createWorkout: 'Create Workout',
       },
       validation: {
         required: '{{label}} is required.',
@@ -136,6 +145,7 @@ const resources = {
         save: '儲存',
         add: '新增',
         prev: '回前頁',
+        close: '關閉',
       },
       settings: {
         language: '語言',
@@ -149,6 +159,13 @@ const resources = {
         thu: '四',
         fri: '五',
         sat: '六',
+        noWorkoutsOnDate: '此日期沒有訓練。',
+        title: '行事曆 - 訓練助手',
+        description: '以行事曆格式查看您的訓練',
+        today: '今天',
+        goToToday: '前往今天',
+        previousMonth: '上一個月',
+        nextMonth: '下一個月',
       },
       workout: {
         notFound: '找不到訓練。',
@@ -173,6 +190,7 @@ const resources = {
         noExercises: '目前沒有任何運動在這次訓練中。',
         startWorkout: '開始訓練',
         timer: '計時器',
+        createWorkout: '新增訓練',
       },
       validation: {
         required: '{{label}} 是必填的。',
