@@ -8,7 +8,21 @@ import { LocalStorageService } from '~/services/LocalStorageService';
 
 // Mock i18n
 vi.mock('react-i18next', () => ({
-  useTranslation: () => ({ t: (key: string) => key }),
+  useTranslation: () => ({
+    t: (key: string) => {
+      const translations: Record<string, string> = {
+        'workout.notFound': 'workout.notFound',
+        'workout.basicInfo': 'Basic Info',
+        'workout.exercises': 'Exercises',
+        'workout.date': 'workout.date',
+        'workout.description': 'workout.description',
+        'workout.startWorkout': 'workout.startWorkout',
+        'common.delete': 'common.delete',
+        'common.edit': 'common.edit',
+      };
+      return translations[key] || key;
+    },
+  }),
 }));
 
 // Mock SVG icons
