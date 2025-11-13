@@ -189,7 +189,7 @@ export default function ExerciseFormModal({
   const exerciseLabelCategoryMap = useMemo(
     () =>
       new Map(
-        exerciseNameOptions.map(option => [option.label, option.category])
+        exerciseNameOptions.map(option => [option.value, option.category])
       ),
     [exerciseNameOptions]
   );
@@ -277,6 +277,9 @@ export default function ExerciseFormModal({
             placeholder="e.g. Bench Press"
             value={exerciseName}
             options={exerciseNameOptions}
+            valueFormat={option =>
+              typeof option === 'string' ? option : option.value
+            }
             required
             onChange={value => {
               setExerciseName(value);
@@ -290,8 +293,10 @@ export default function ExerciseFormModal({
           <FormSelect
             name="category"
             label={t('workout.exercise.category')}
+            placeholder="-"
             options={categoryOptions}
             value={category}
+            required
             onChange={value => setCategory(value as TExerciseCategory)}
           />
           <FormInput

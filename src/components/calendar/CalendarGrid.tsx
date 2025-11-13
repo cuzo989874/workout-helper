@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import type { ICalendarDay } from '~/utils/calendarUtils';
 import type { IWorkout } from '~/interface/workout';
 import CalendarDateCell from './CalendarDateCell';
@@ -9,20 +10,22 @@ export interface ICalendarGridProps {
   onDateClick: (date: string) => void;
 }
 
-const WEEKDAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+const WEEKDAY_KEYS = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'] as const;
 
 export default function CalendarGrid({
   days,
   workoutsByDate,
   onDateClick,
 }: ICalendarGridProps) {
+  const { t } = useTranslation();
+
   return (
     <div className={styles['calendar-grid']}>
       {/* Week day headers */}
       <div className={styles['calendar-header-row']}>
-        {WEEKDAYS.map(day => (
-          <div key={day} className={styles['day-header']}>
-            {day}
+        {WEEKDAY_KEYS.map(dayKey => (
+          <div key={dayKey} className={styles['day-header']}>
+            {t(`calendar.${dayKey}`)}
           </div>
         ))}
       </div>

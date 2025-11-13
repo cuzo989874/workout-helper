@@ -1,9 +1,6 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-// the translations
-// (tip move them in a JSON file and import them,
-// or even better, manage them separated from your code: https://react.i18next.com/guides/multiple-translation-files)
 const resources = {
   en: {
     translation: {
@@ -20,6 +17,11 @@ const resources = {
         save: 'Save',
         add: 'Add',
         prev: 'Prev',
+        close: 'Close',
+      },
+      settings: {
+        language: 'Language',
+        version: 'Version',
       },
       calendar: {
         sun: 'Sun',
@@ -29,6 +31,13 @@ const resources = {
         thu: 'Thu',
         fri: 'Fri',
         sat: 'Sat',
+        noWorkoutsOnDate: 'No workouts on this date.',
+        title: 'Calendar - Workout Helper',
+        description: 'View your workouts in calendar format',
+        today: 'Today',
+        goToToday: 'Go to today',
+        previousMonth: 'Previous month',
+        nextMonth: 'Next month',
       },
       workout: {
         notFound: 'Workout not found.',
@@ -54,11 +63,16 @@ const resources = {
         noExercises: 'There are no exercises in this workout.',
         startWorkout: 'Start Workout',
         timer: 'Timer',
+        createWorkout: 'Create Workout',
       },
       validation: {
         required: '{{label}} is required.',
         minLength: 'Minimum length is {{min}} characters.',
         maxLength: 'Maximum length is {{max}} characters.',
+      },
+      datePicker: {
+        selectDate: 'Select Date',
+        invalidDate: 'Invalid date',
       },
       exercise: {
         form: {
@@ -120,7 +134,7 @@ const resources = {
       },
     },
   },
-  'zh-tw': {
+  'zh-TW': {
     translation: {
       common: {
         back: '返回',
@@ -135,6 +149,11 @@ const resources = {
         save: '儲存',
         add: '新增',
         prev: '回前頁',
+        close: '關閉',
+      },
+      settings: {
+        language: '語言',
+        version: '版本',
       },
       calendar: {
         sun: '日',
@@ -144,6 +163,13 @@ const resources = {
         thu: '四',
         fri: '五',
         sat: '六',
+        noWorkoutsOnDate: '此日期沒有訓練。',
+        title: '行事曆 - 訓練助手',
+        description: '以行事曆格式查看您的訓練',
+        today: '今天',
+        goToToday: '前往今天',
+        previousMonth: '上一個月',
+        nextMonth: '下一個月',
       },
       workout: {
         notFound: '找不到訓練。',
@@ -168,11 +194,16 @@ const resources = {
         noExercises: '目前沒有任何運動在這次訓練中。',
         startWorkout: '開始訓練',
         timer: '計時器',
+        createWorkout: '新增訓練',
       },
       validation: {
         required: '{{label}} 是必填的。',
         minLength: '至少需要輸入 {{min}} 個字元。',
         maxLength: '最多只能輸入 {{max}} 個字元。',
+      },
+      datePicker: {
+        selectDate: '選擇日期',
+        invalidDate: '無效的日期',
       },
       exercise: {
         form: {
@@ -236,15 +267,59 @@ const resources = {
   },
 };
 
+const getStoredLanguage = (): string => {
+  try {
+    const stored = localStorage.getItem('i18nextLng');
+    const normalized = stored?.toLowerCase();
+    if (normalized === 'en') {
+      return 'en';
+    }
+    if (normalized === 'zh-tw' || normalized === 'zh_tw') {
+      return 'zh-TW';
+    }
+  } catch (error) {
+    console.error(
+      'Error reading language preference from localStorage:',
+      error
+    );
+  }
+  return 'en';
+};
+
 i18n.use(initReactI18next).init({
   resources,
-  lng: 'en', // language to use, more information here: https://www.i18next.com/overview/configuration-options#languages-namespaces-resources
-  // you can use the i18n.changeLanguage function to change the language manually: https://www.i18next.com/overview/api#changelanguage
-  // if you're using a language detector, do not define the lng option
-
+  lng: getStoredLanguage(),
+  fallbackLng: 'en',
+  supportedLngs: ['en', 'zh-TW'],
+  nonExplicitSupportedLngs: false,
+  cleanCode: false,
+  load: 'currentOnly',
+  preload: ['en', 'zh-TW'],
   interpolation: {
     escapeValue: false, // react already safes from xss
   },
+  react: {
+    useSuspense: false,
+  },
+  debug: import.meta.env.DEV,
+  detection: {
+    order: [],
+    caches: [],
+  },
+});
+
+i18n.on('languageChanged', (lng: string) => {
+  try {
+    localStorage.setItem('i18nextLng', lng);
+    console.log('Language changed to:', lng);
+    console.log(
+      'Available languages:',
+      Object.keys(i18n.options.resources || {})
+    );
+    console.log('Current language:', i18n.language);
+  } catch (error) {
+    console.error('Error saving language preference to localStorage:', error);
+  }
 });
 
 export default i18n;

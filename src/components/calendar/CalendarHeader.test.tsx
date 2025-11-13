@@ -5,6 +5,21 @@ import { describe, it, expect, vi, afterEach } from 'vitest';
 import CalendarHeader from './CalendarHeader';
 import * as calendarUtils from '~/utils/calendarUtils';
 
+// Mock i18n
+vi.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (key: string) => {
+      const translations: Record<string, string> = {
+        'calendar.today': 'Today',
+        'calendar.goToToday': 'Go to today',
+        'calendar.previousMonth': 'Previous month',
+        'calendar.nextMonth': 'Next month',
+      };
+      return translations[key] || key;
+    },
+  }),
+}));
+
 // Mock SCSS module
 vi.mock('./CalendarHeader.module.scss', () => ({
   default: {

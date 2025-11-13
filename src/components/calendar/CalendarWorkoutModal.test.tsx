@@ -5,6 +5,27 @@ import { describe, it, expect, vi, afterEach } from 'vitest';
 import CalendarWorkoutModal from './CalendarWorkoutModal';
 import type { IWorkout } from '~/interface/workout';
 
+// Mock i18n
+vi.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (key: string) => {
+      const translations: Record<string, string> = {
+        'common.close': 'Close',
+        'calendar.noWorkoutsOnDate': 'No workouts on this date.',
+        'workout.createWorkout': 'Create Workout',
+      };
+      return translations[key] || key;
+    },
+  }),
+}));
+
+// Mock i18n instance for date formatting
+vi.mock('~/i18n', () => ({
+  default: {
+    language: 'en',
+  },
+}));
+
 // Mock SCSS module
 vi.mock('./CalendarWorkoutModal.module.scss', () => ({
   default: {

@@ -15,6 +15,10 @@ vi.mock('~/assets/google-fonts/calendar_month.svg?react', () => ({
   default: () => <svg data-testid="calendar-icon" />,
 }));
 
+vi.mock('~/assets/google-fonts/settings.svg?react', () => ({
+  default: () => <svg data-testid="settings-icon" />,
+}));
+
 // Mock WorkoutCard to keep Home tests focused on integration behavior
 vi.mock('~/components/feature/WorkoutCard', () => ({
   default: ({ workout }: { workout: IWorkout }) => (

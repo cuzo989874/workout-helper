@@ -79,7 +79,7 @@ export default function WorkoutDetail() {
           </button>
         </div>
         <section className="mb-lg">
-          <h2 className="mb-md">Basic Info</h2>
+          <h2 className="mb-md">{t('workout.basicInfo')}</h2>
           <div className="flex flex-column px-md g-md">
             <div>
               <h4>{t('workout.date')}</h4>
@@ -93,7 +93,7 @@ export default function WorkoutDetail() {
         </section>
 
         <section>
-          <h2 className="mb-md">Exercises</h2>
+          <h2 className="mb-md">{t('workout.exercises')}</h2>
           {workout.exerciseList.length > 0 ? (
             <ul className="flex flex-column g-md px-md mb-lg">
               {workout.exerciseList.map((exercise, index) => (

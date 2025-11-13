@@ -24,6 +24,11 @@ vi.mock('~/assets/google-fonts/calendar_month.svg?react', () => ({
   default: () => <svg data-testid="calendar-icon" />,
 }));
 
+// mock SettingsIcon
+vi.mock('~/assets/google-fonts/settings.svg?react', () => ({
+  default: () => <svg data-testid="settings-icon" />,
+}));
+
 // mock scss module
 vi.mock('./Header.module.scss', () => ({
   default: {

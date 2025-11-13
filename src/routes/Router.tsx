@@ -2,6 +2,7 @@ import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import Home from './Home';
+import Settings from './Settings';
 import Calendar from './Calendar';
 import CreateWorkout from './CreateWorkout';
 import UpdateWorkout from './UpdateWorkout';
@@ -13,6 +14,10 @@ const Router: React.FC = () => {
     {
       path: '/',
       element: <Home />,
+    },
+    {
+      path: '/settings',
+      element: <Settings />,
     },
     {
       path: '/calendar',
