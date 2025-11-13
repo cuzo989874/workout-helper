@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import Switch from '~/components/form/Switch';
 import SubPageHeader from '~/components/layouts/SubPageHeader';
+import { useTheme } from '~/hooks/useTheme';
 
 import styles from './Settings.module.scss';
 
@@ -14,6 +16,7 @@ export default function Settings() {
   const { t, i18n } = useTranslation();
   const version = APP_VERSION;
   const [currentLang, setCurrentLang] = useState(i18n.language);
+  const { theme, toggleTheme } = useTheme();
 
   // 监听语言变化
   useEffect(() => {
@@ -68,6 +71,18 @@ export default function Settings() {
                   </option>
                 ))}
               </select>
+            </div>
+          </li>
+          <li className={styles['settings__item']}>
+            <label className={styles['settings__label']}>
+              {t('settings.theme')}
+            </label>
+            <div className={styles['settings__switch-wrapper']}>
+              <Switch
+                checked={theme === 'dark'}
+                onChange={toggleTheme}
+                ariaLabel={t('settings.theme')}
+              />
             </div>
           </li>
           <li className={styles['settings__item']}>

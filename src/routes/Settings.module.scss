@@ -29,6 +29,12 @@
     padding: $spacing-md 0;
   }
 
+  &__switch-wrapper {
+    margin-top: $spacing-xs;
+    display: flex;
+    align-items: center;
+  }
+
   // Material Design 风格的 select 容器
   &__select-wrapper {
     position: relative;
@@ -60,7 +66,7 @@
     width: 100%;
     padding: $spacing-md $spacing-xl $spacing-md $spacing-sm;
     border: none;
-    border-bottom: 1px solid rgba($text-dark, 0.42);
+    border-bottom: 1px solid color-mix(in srgb, var(--text-dark) 42%, transparent);
     border-radius: 0;
     font-size: $font-size-base;
     color: $text-dark;
@@ -78,25 +84,25 @@
     background-repeat: no-repeat;
     background-size: 24px;
     padding-right: 48px;
-
+    
     // Hover 状态 - Material Design ripple effect 的替代
     &:hover {
-      background-color: rgba($text-dark, 0.04);
-      border-bottom-color: rgba($text-dark, 0.87);
+      background-color: color-mix(in srgb, var(--text-dark) 4%, transparent);
+      border-bottom-color: color-mix(in srgb, var(--text-dark) 87%, transparent);
     }
-
+    
     // Focus 状态 - Material Design 强调色（下划线由 wrapper 的 ::after 处理）
     &:focus {
       outline: none;
       border-bottom-color: $primary-green;
-      background-color: rgba($primary-green, 0.04);
+      background-color: color-mix(in srgb, $primary-green 4%, transparent);
     }
-
+    
     // Active 状态
     &:active {
-      background-color: rgba($primary-green, 0.08);
+      background-color: color-mix(in srgb, $primary-green 8%, transparent);
     }
-
+    
     // Material Design 的选项样式
     option {
       padding: $spacing-md;

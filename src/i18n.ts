@@ -21,6 +21,7 @@ const resources = {
       },
       settings: {
         language: 'Language',
+        theme: 'Dark Mode',
         version: 'Version',
       },
       calendar: {
@@ -153,6 +154,7 @@ const resources = {
       },
       settings: {
         language: '語言',
+        theme: '深色模式',
         version: '版本',
       },
       calendar: {
