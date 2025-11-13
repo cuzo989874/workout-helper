@@ -171,7 +171,7 @@ const DatePickerInput: React.FC<IDatePickerInputProps> = ({
           className={styles['form-date-picker__calendar-button']}
           disabled={disabled}
           tabIndex={-1}
-          aria-label="Select Date"
+          aria-label={t('datePicker.selectDate')}
           onClick={handleCalendarClick}
         >
           <CalendarIcon width={18} height={18} />
