@@ -8,7 +8,7 @@ export default function SubPageLayout({
   return (
     <>
       <SubPageHeader />
-      <main className="main pt-md px-lg">{children}</main>
+      <main className="main main--sm pt-md px-lg">{children}</main>
     </>
   );
 }

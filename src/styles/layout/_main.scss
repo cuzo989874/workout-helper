@@ -4,4 +4,8 @@
   width: min(100%, variables.$breakpoint-lg);
   margin: 0 auto;
   padding: variables.$spacing-sm variables.$spacing-md variables.$spacing-lg;
+
+  &--sm {
+    width: min(100%, variables.$breakpoint-sm);
+  }
 }

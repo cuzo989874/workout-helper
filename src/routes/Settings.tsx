@@ -49,7 +49,7 @@ export default function Settings() {
   return (
     <div>
       <SubPageHeader />
-      <main className="main pt-md px-lg">
+      <main className="main main--sm pt-md px-lg">
         <ul className={styles['settings__list']}>
           <li className={styles['settings__item']}>
             <label className={styles['settings__label']}>
