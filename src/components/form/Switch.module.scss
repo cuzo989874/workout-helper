@@ -1,0 +1,75 @@
+@use '../../styles/abstracts/variables' as *;
+
+.switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 48px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+  transition: opacity $transition-fast $ease-in-out;
+
+  &:focus-visible {
+    .switch__track {
+      box-shadow: 0 0 0 3px rgba($primary-green, 0.2);
+    }
+  }
+
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &__track {
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    background-color: color-mix(in srgb, var(--text-dark) 30%, transparent);
+    border-radius: 10px;
+    transition: background-color $transition-normal $ease-in-out;
+  }
+
+  &__thumb {
+    position: absolute;
+    left: 4px;
+    width: 16px;
+    height: 16px;
+    background-color: $bg-white;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform $transition-normal $ease-in-out,
+                background-color $transition-normal $ease-in-out;
+    transform: translateX(0);
+  }
+
+  &--checked {
+    .switch__track {
+      background-color: $primary-green;
+    }
+
+    .switch__thumb {
+      transform: translateX(20px);
+    }
+  }
+
+  &:hover:not(&--disabled) {
+    .switch__track {
+      background-color: color-mix(in srgb, var(--text-dark) 40%, transparent);
+    }
+
+    &.switch--checked .switch__track {
+      background-color: $light-green;
+    }
+  }
+
+  &:active:not(&--disabled) {
+    .switch__thumb {
+      width: 18px;
+    }
+  }
+}
+

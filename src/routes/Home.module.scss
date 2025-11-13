@@ -15,6 +15,10 @@
   font-weight: variables.$font-weight-bold;
   text-align: center;
   width: fit-content;
+
+  [data-theme='dark'] & {
+    background-color: #eee2;
+  }
 }
 
 .floating-action-button {
@@ -37,5 +41,9 @@
 
   &:hover {
     background-color: variables.$dark-green;
+
+    [data-theme='dark'] & {
+      background-color: variables.$light-green;
+    }
   }
 }

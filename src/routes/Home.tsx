@@ -42,7 +42,7 @@ export default function Home() {
     <div>
       <Header />
       <main className={`main ${styles['home-main']}`}>
-        <ul>
+        <ul className="flex flex-column align-center">
           {groupedWorkoutByDate.map(({ workout, date }) => (
             <li key={date}>
               <h2 className={styles['date-chip']}>{date}</h2>

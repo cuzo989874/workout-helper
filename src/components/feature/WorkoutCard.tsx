@@ -12,7 +12,7 @@ export default function WorkoutCard({ workout }: { workout: IWorkout }) {
     <Card className={styles['workout-card']}>
       <CardHeader className="flex align-center justify-between pb-md bg-primary">
         <h3>{workout.description}</h3>
-        <button className="btn icon-btn icon-btn--primary">
+        <button className="icon-btn icon-btn--primary ml-xl">
           <EditIcon width={18} height={18} fill="currentColor" />
         </button>
       </CardHeader>

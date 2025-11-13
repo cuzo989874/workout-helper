@@ -44,7 +44,7 @@ export default function Header() {
         <div className={styles['header-actions']}>
           <button
             type="button"
-            className={`btn icon-btn ${styles['view-toggle-btn']}`}
+            className={`icon-btn ${styles['header-icon-btn']}`}
             onClick={handleViewToggle}
             aria-label={
               isCalendarView ? 'Switch to list view' : 'Switch to calendar view'
@@ -60,12 +60,11 @@ export default function Header() {
           </button>
           <button
             type="button"
-            className="btn icon-btn"
+            className={`icon-btn ${styles['header-icon-btn']}`}
             onClick={() => navigate('/settings')}
           >
             <SettingsIcon width={24} height={24} fill="currentColor" />
           </button>
-          {/* TODO: Dark Mode Button */}
         </div>
       </div>
     </header>
