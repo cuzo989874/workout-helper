@@ -63,7 +63,7 @@ export default function CalendarWorkoutModal({
           <h3 id="modal-title">{formatDisplayDate(selectedDate)}</h3>
           <button
             type="button"
-            className="btn icon-btn"
+            className="icon-btn"
             onClick={onClose}
             aria-label={t('common.close')}
           >

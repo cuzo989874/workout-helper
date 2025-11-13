@@ -481,7 +481,7 @@ export default function Header() {
       </a>
       
       <button 
-        className="btn icon-btn"
+        className="icon-btn"
         onClick={handleViewToggle}
         aria-label={isCalendarView ? "Switch to list view" : "Switch to calendar view"}
       >

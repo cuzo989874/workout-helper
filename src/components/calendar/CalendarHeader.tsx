@@ -39,7 +39,7 @@ export default function CalendarHeader({
       <div className="flex gx-sm">
         <button
           type="button"
-          className={`btn icon-btn ${styles['nav-button']}`}
+          className={`icon-btn ${styles['nav-button']}`}
           onClick={onPreviousMonth}
           aria-label={t('calendar.previousMonth')}
         >
@@ -47,7 +47,7 @@ export default function CalendarHeader({
         </button>
         <button
           type="button"
-          className={`btn icon-btn ${styles['nav-button']}`}
+          className={`icon-btn ${styles['nav-button']}`}
           onClick={onNextMonth}
           aria-label={t('calendar.nextMonth')}
         >

@@ -35,7 +35,7 @@ export default function ExerciseCard({
             {onEdit && (
               <button
                 type="button"
-                className="btn icon-btn icon-btn--primary"
+                className="icon-btn icon-btn--primary"
                 onClick={() => onEdit(exercise)}
               >
                 <EditIcon width={18} height={18} fill="currentColor" />
@@ -44,7 +44,7 @@ export default function ExerciseCard({
             {onDelete && (
               <button
                 type="button"
-                className="btn icon-btn icon-btn--primary"
+                className="icon-btn icon-btn--primary"
                 onClick={() => onDelete(exercise)}
               >
                 <DeleteIcon width={18} height={18} fill="currentColor" />
