@@ -5,6 +5,24 @@ import { describe, it, expect, vi, afterEach } from 'vitest';
 import CalendarGrid from './CalendarGrid';
 import type { ICalendarDay } from '~/utils/calendarUtils';
 
+// Mock i18n
+vi.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (key: string) => {
+      const translations: Record<string, string> = {
+        'calendar.mon': 'Mon',
+        'calendar.tue': 'Tue',
+        'calendar.wed': 'Wed',
+        'calendar.thu': 'Thu',
+        'calendar.fri': 'Fri',
+        'calendar.sat': 'Sat',
+        'calendar.sun': 'Sun',
+      };
+      return translations[key] || key;
+    },
+  }),
+}));
+
 // Mock SCSS module for CalendarGrid
 vi.mock('./CalendarGrid.module.scss', () => ({
   default: {
