@@ -277,7 +277,9 @@ export default function ExerciseFormModal({
             placeholder="e.g. Bench Press"
             value={exerciseName}
             options={exerciseNameOptions}
-            valueFormat={option => (typeof option === 'string' ? option : option.value)}
+            valueFormat={option =>
+              typeof option === 'string' ? option : option.value
+            }
             required
             onChange={value => {
               setExerciseName(value);
