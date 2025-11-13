@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import i18n from '~/i18n';
 import { LocalStorageService } from '~/services/LocalStorageService';
 import {
   computeCalendarDays,
@@ -15,12 +17,13 @@ import styles from './Calendar.module.scss';
 
 export function meta() {
   return [
-    { title: 'Calendar - Workout Helper' },
-    { name: 'description', content: 'View your workouts in calendar format' },
+    { title: i18n.t('calendar.title') },
+    { name: 'description', content: i18n.t('calendar.description') },
   ];
 }
 
 export default function Calendar() {
+  const { i18n: i18nInstance } = useTranslation();
   const navigate = useNavigate();
 
   // State
@@ -105,6 +108,7 @@ export default function Calendar() {
             onPreviousMonth={handlePreviousMonth}
             onNextMonth={handleNextMonth}
             onToday={handleToday}
+            locale={i18nInstance.language}
           />
           <CalendarGrid
             days={calendarDays}

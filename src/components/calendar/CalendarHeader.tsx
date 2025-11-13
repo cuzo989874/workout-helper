@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { getMonthName } from '~/utils/calendarUtils';
 import ChevronLeftIcon from '~/assets/google-fonts/chevron_left.svg?react';
 import ChevronRightIcon from '~/assets/google-fonts/chevron_right.svg?react';
@@ -20,6 +21,7 @@ export default function CalendarHeader({
   onToday,
   locale = 'en',
 }: ICalendarHeaderProps) {
+  const { t } = useTranslation();
   const monthName = getMonthName(currentMonth, locale);
 
   return (
@@ -29,9 +31,9 @@ export default function CalendarHeader({
           type="button"
           className={`btn btn-outline ${styles['today-button']}`}
           onClick={onToday}
-          aria-label="Go to today"
+          aria-label={t('calendar.goToToday')}
         >
-          Today
+          {t('calendar.today')}
         </button>
       )}
       <div className="flex gx-sm">
@@ -39,7 +41,7 @@ export default function CalendarHeader({
           type="button"
           className={`btn icon-btn ${styles['nav-button']}`}
           onClick={onPreviousMonth}
-          aria-label="Previous month"
+          aria-label={t('calendar.previousMonth')}
         >
           <ChevronLeftIcon width={24} height={24} fill="currentColor" />
         </button>
@@ -47,7 +49,7 @@ export default function CalendarHeader({
           type="button"
           className={`btn icon-btn ${styles['nav-button']}`}
           onClick={onNextMonth}
-          aria-label="Next month"
+          aria-label={t('calendar.nextMonth')}
         >
           <ChevronRightIcon width={24} height={24} fill="currentColor" />
         </button>

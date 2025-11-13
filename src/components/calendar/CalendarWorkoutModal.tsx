@@ -1,4 +1,6 @@
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import i18n from '~/i18n';
 import type { IWorkout } from '~/interface/workout';
 import WorkoutCard from '~/components/feature/WorkoutCard';
 import CloseIcon from '~/assets/google-fonts/close.svg?react';
@@ -20,6 +22,7 @@ export default function CalendarWorkoutModal({
   onClose,
   onCreateWorkout,
 }: ICalendarWorkoutModalProps) {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   if (!isOpen || !selectedDate) {
@@ -39,7 +42,8 @@ export default function CalendarWorkoutModal({
   // Format date for display (e.g., "2025-10-15" -> "October 15, 2025")
   const formatDisplayDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
+    const locale = i18n.language === 'zh-TW' ? 'zh-TW' : 'en-US';
+    return date.toLocaleDateString(locale, {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
@@ -61,7 +65,7 @@ export default function CalendarWorkoutModal({
             type="button"
             className="btn icon-btn"
             onClick={onClose}
-            aria-label="Close"
+            aria-label={t('common.close')}
           >
             <CloseIcon width={24} height={24} fill="currentColor" />
           </button>
@@ -70,7 +74,7 @@ export default function CalendarWorkoutModal({
         <div className={styles['modal-body']}>
           {workouts.length === 0 ? (
             <p className={styles['no-workouts-message']}>
-              No workouts on this date.
+              {t('calendar.noWorkoutsOnDate')}
             </p>
           ) : (
             <ul className={styles['workout-list']}>
@@ -94,7 +98,7 @@ export default function CalendarWorkoutModal({
             onClick={onCreateWorkout}
           >
             <AddIcon width={18} height={18} fill="currentColor" />
-            Create Workout
+            {t('workout.createWorkout')}
           </button>
         </div>
       </div>
