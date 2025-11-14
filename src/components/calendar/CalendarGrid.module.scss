@@ -11,19 +11,32 @@
 .calendar-header-row {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  background-color: #609a88;
-  color: variables.$bg-white;
+  background-color: #b3d1c8;
+  border-bottom: 1px solid variables.$border-light-green;
+  
+  [data-theme='dark'] & {
+    background-color: variables.$dark-green;
+    border-bottom-color: variables.$primary-green;
+  }
 }
 
 .day-header {
-  padding: variables.$spacing-sm;
+  padding: variables.$spacing-md variables.$spacing-sm;
   text-align: center;
   font-weight: variables.$font-weight-bold;
   font-size: variables.$font-size-sm;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: variables.$text-dark;
   border-right: 1px solid rgba(255, 255, 255, 0.2);
 
   &:last-child {
     border-right: none;
+  }
+  
+  [data-theme='dark'] & {
+    color: variables.$text-white;
+    border-right-color: rgba(255, 255, 255, 0.15);
   }
 }
 

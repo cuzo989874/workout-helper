@@ -5,9 +5,14 @@
   align-items: center;
   justify-content: space-between;
   padding: variables.$spacing-md;
-  background-color: variables.$bg-white;
-  border-bottom: 2px solid variables.$border-color;
+  background-color: variables.$bg-primary;
+  border-bottom: 2px solid variables.$border-light-green;
   gap: variables.$spacing-md;
+  
+  [data-theme='dark'] & {
+    background-color: variables.$bg-sub-green;
+    border-bottom-color: variables.$border-light-green;
+  }
 }
 
 .nav-button {
@@ -19,20 +24,42 @@
   padding: variables.$spacing-xs;
   border-radius: variables.$border-radius-md;
   transition: variables.$transition-fast;
+  color: variables.$primary-green;
+  background-color: transparent;
+
+  [data-theme='dark'] & {
+    color: variables.$text-white;
+  }
 
   &:hover {
-    background-color: rgba(variables.$primary-green, 20%);
+    background-color: rgba(variables.$primary-green, 0.1);
+    color: variables.$dark-green;
+    
+    [data-theme='dark'] & {
+      background-color: rgba(variables.$light-green, 0.2);
+      color: variables.$text-white;
+    }
+  }
+  
+  &:active {
+    transform: scale(0.95);
   }
 }
 
 .month-year-display {
   flex: 1;
+  text-align: left;
 
   h2 {
     font-size: variables.$font-size-xl;
     font-weight: variables.$font-weight-bold;
-    color: variables.$text-dark;
+    color: variables.$primary-green;
     margin: 0;
+    letter-spacing: -0.02em;
+    
+    [data-theme='dark'] & {
+      color: variables.$light-green;
+    }
   }
 }
 
@@ -41,6 +68,15 @@
   font-size: variables.$font-size-sm;
   font-weight: variables.$font-weight-normal;
   white-space: nowrap;
+  border-color: variables.$primary-green;
+  color: variables.$primary-green;
+  
+  &:hover {
+    background-color: variables.$primary-green;
+    color: variables.$text-white;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(variables.$primary-green, 0.3);
+  }
 }
 
 // Responsive adjustments
@@ -50,8 +86,10 @@
     gap: variables.$spacing-sm;
   }
 
-  .month-year-display h2 {
-    font-size: variables.$font-size-lg;
+  .month-year-display {
+    h2 {
+      font-size: variables.$font-size-lg;
+    }
   }
 
   .nav-button {
@@ -60,14 +98,19 @@
   }
 
   .today-button {
-    padding: 2px variables.$spacing-sm;
-    font-size: variables.$font-size-sm;
+    padding: variables.$spacing-xs variables.$spacing-sm;
+    font-size: variables.$font-size-xs;
   }
 }
 
 @media (max-width: 480px) {
+  .calendar-header {
+    padding: variables.$spacing-sm;
+  }
+  
   .month-year-display {
-    flex-basis: 100%;
-    margin-bottom: variables.$spacing-xs;
+    h2 {
+      font-size: variables.$font-size-base;
+    }
   }
 }
