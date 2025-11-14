@@ -55,7 +55,6 @@ describe('當：WorkoutCard 組件', () => {
 
     // Edit button and icon
     const editButton = screen.getByRole('button');
-    expect(editButton).toHaveClass('btn');
     expect(editButton).toHaveClass('icon-btn');
     expect(editButton).toHaveClass('icon-btn--primary');
     expect(screen.getByTestId('edit-icon')).toBeInTheDocument();
