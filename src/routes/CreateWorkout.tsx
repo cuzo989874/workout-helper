@@ -150,7 +150,7 @@ export default function CreateWorkout() {
             >
               <button
                 type="submit"
-                className="btn btn-flat--primary w-100 stepper__button--next"
+                className="btn btn-flat btn-flat--primary w-100 stepper__button--next"
               >
                 {t('workout.continueToAddExercises', {
                   defaultValue: 'Continue to Add Workout',
@@ -218,7 +218,7 @@ export default function CreateWorkout() {
                 />
                 {t('common.prev', { defaultValue: 'Prev' })}
               </button>
-              <button type="submit" className="btn btn-flat--primary">
+              <button type="submit" className="btn btn-flat btn-flat--primary">
                 <SaveIcon
                   width={18}
                   height={18}

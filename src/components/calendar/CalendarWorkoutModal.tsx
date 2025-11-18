@@ -94,7 +94,7 @@ export default function CalendarWorkoutModal({
         <div className={styles['modal-footer']}>
           <button
             type="button"
-            className="btn btn-flat--primary w-100"
+            className="btn btn-flat btn-flat--primary w-100"
             onClick={onCreateWorkout}
           >
             <AddIcon width={18} height={18} fill="currentColor" />
