@@ -31,10 +31,14 @@
 
 // Other month dates (prev/next month)
 .other-month {
-  background-color: #eee;
+  background-color: variables.$bg-other-month;
   
   .date-number {
-    color: #aaa;
+    color: variables.$text-other-month;
+  }
+  
+  &:hover {
+    background-color: variables.$bg-grey-hover;
   }
 }
 

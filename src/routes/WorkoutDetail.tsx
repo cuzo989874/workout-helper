@@ -71,7 +71,7 @@ export default function WorkoutDetail() {
             </button>
           )}
           <button
-            className="btn btn-flat--primary"
+            className="btn btn-flat btn-flat--primary"
             onClick={() => navigate(`/workout/update/${workout.id}`)}
           >
             <EditIcon width={18} height={18} fill="currentColor" />

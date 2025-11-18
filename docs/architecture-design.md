@@ -423,7 +423,7 @@ interface ICalendarWorkoutModalProps {
       
       <div className={styles['modal-footer']}>
         <button 
-          className="btn btn-flat--primary w-100"
+          className="btn btn-flat btn-flat--primary w-100"
           onClick={onCreateWorkout}
         >
           <AddIcon /> Create Workout

@@ -65,6 +65,9 @@ $dark-red: #B72D29;
   --border-light-green: #e6f3ed;
   
   --button-hover: #ebfff5;
+  
+  --bg-other-month: #f0f4f3;
+  --text-other-month: #aaa;
 }
 
 [data-theme='dark'] {
@@ -90,6 +93,9 @@ $dark-red: #B72D29;
   --border-light-green: #2a4a3a;
   
   --button-hover: #1a3d2e;
+  
+  --bg-other-month: #2a2a2a;
+  --text-other-month: #707070;
 }
 
 // SCSS 變數映射到 CSS 變數 (用於向後兼容)
@@ -114,6 +120,9 @@ $border-color: var(--border-color);
 $border-light-green: var(--border-light-green);
 
 $button-hover: var(--button-hover);
+
+$bg-other-month: var(--bg-other-month);
+$text-other-month: var(--text-other-month);
 
 // =============================================================================
 // 陰影系統 (Shadow System)

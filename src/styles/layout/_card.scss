@@ -10,6 +10,10 @@
   min-height: 0;
   overflow: hidden;
 
+  [data-theme='dark'] & {
+    background: #4a4e4c;
+  }
+
   &--auto-height {
     height: auto;
   }

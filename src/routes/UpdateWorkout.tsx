@@ -173,7 +173,7 @@ export default function UpdateWorkout() {
             >
               <button
                 type="submit"
-                className="btn btn-flat--primary w-100 stepper__button--next"
+                className="btn btn-flat btn-flat--primary w-100 stepper__button--next"
               >
                 {t('workout.continueToEditExercises', {
                   defaultValue: 'Continue to Edit Workout',
@@ -232,7 +232,7 @@ export default function UpdateWorkout() {
                 />
                 {t('common.prev', { defaultValue: 'Prev' })}
               </button>
-              <button type="submit" className="btn btn-flat--primary">
+              <button type="submit" className="btn btn-flat btn-flat--primary">
                 <SaveIcon
                   width={18}
                   height={18}

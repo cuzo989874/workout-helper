@@ -1,10 +1,14 @@
 @use "../../styles/abstracts/variables";
 
 .set-setting-form-card {
-  background-color: #eee;
+  background-color: variables.$bg-grey;
   padding: variables.$spacing-md variables.$spacing-md variables.$spacing-sm;
   border-radius: variables.$border-radius;
   margin-bottom: variables.$spacing-sm;
+
+  [data-theme='dark'] & {
+    background-color: variables.$bg-light;
+  }
 }
 
 .add-set-setting-button {

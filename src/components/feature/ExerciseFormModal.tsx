@@ -321,7 +321,7 @@ export default function ExerciseFormModal({
               onChange={setSetSettingList}
             />
           </section>
-          <button type="submit" className="btn btn-flat--primary w-100">
+          <button type="submit" className="btn btn-flat btn-flat--primary w-100">
             <SaveIcon width={18} height={18} fill="currentColor" />
             {isEdit ? t('common.save') : t('exercise.form.create')}
           </button>
